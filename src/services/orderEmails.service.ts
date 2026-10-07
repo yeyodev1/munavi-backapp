@@ -26,7 +26,7 @@ const PAYMENT_LABEL: Record<IOrder["paymentMethod"], string> = {
 };
 
 function button(href: string, label: string): string {
-  return `<p style="margin:24px 0"><a href="${esc(href)}" style="background:#6b2d8c;color:#fff;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:bold">${esc(label)}</a></p>`;
+  return `<p style="margin:24px 0"><a href="${esc(href)}" style="background:#518936;color:#fff;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:bold">${esc(label)}</a></p>`;
 }
 
 function orderLink(order: IOrder): string {
@@ -83,7 +83,7 @@ export async function sendOrderReceived(order: IOrder, settings: ISettings): Pro
     const wa = whatsappLink(settings, order);
     body = `${hello}
       <p>Para confirmarlo, transfiere <strong>${money(order.total)}</strong> a esta cuenta:</p>
-      <p style="background:#f4f0f7;border-radius:12px;padding:16px">${nl2br(settings.bankTransferInfo || "Te enviaremos los datos bancarios en breve.")}</p>
+      <p style="background:#f3faf0;border-radius:12px;padding:16px">${nl2br(settings.bankTransferInfo || "Te enviaremos los datos bancarios en breve.")}</p>
       <p>Luego envíanos el comprobante por WhatsApp indicando tu número de pedido.</p>
       ${wa ? button(wa, "Enviar comprobante por WhatsApp") : ""}
       ${summary(order)}`;
