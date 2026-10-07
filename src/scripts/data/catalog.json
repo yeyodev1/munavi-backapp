@@ -1,0 +1,836 @@
+[
+  {
+    "slug": "calostrovit-advanced",
+    "name": "Calostrovit Advanced",
+    "categorySlug": "inmunidad",
+    "presentation": "Frasco 90 cápsulas x 500 mg (45 g)",
+    "shortDescription": "Calostro bovino con Omega 3 y vitaminas en cápsulas para acompañar tu día a día, ¡te quiero vida!",
+    "benefits": [
+      "Calostro bovino",
+      "Omega 3 (DHA + EPA)",
+      "Vitaminas C, B3, B6, B2, B1, A, B12",
+      "90 cápsulas x 500 mg",
+      "45 tomas por envase",
+      "Sistema neurológico: mantiene el funcionamiento normal del cerebro y la visión",
+      "Sistema cardíaco: contribuye al funcionamiento normal del corazón",
+      "Sistema inmunitario: contribuye al funcionamiento normal del sistema inmunológico",
+      "Antioxidante: contribuye a la protección de las células contra el daño oxidativo"
+    ],
+    "usage": "Adultos: tomar 2 cápsulas (1.00 g) al día. Niños mayores de 12 años: tomar 1 cápsula (500 mg) al día. Ingerir con agua o tu bebida de preferencia.",
+    "ingredients": "Calostro liofilizado en polvo, Omega 3 en polvo, Antiaglutinante (Estearato de Magnesio), Mezcla de Vitaminas (Ácido Ascórbico (Vitamina C), Maltodextrina, Niacinamida (Vitamina B3), Clorhidrato de Piridoxina (Vitamina B6), Riboflavina (Vitamina B2), Mononitrato de Tiamina (Vitamina B1), Palmitato de Vitamina A (Vitamina A), Cianocobalamina (Vitamina B12)), Cápsula de Gelatina (Gelatina, Colorante (Dióxido de Titanio)). CONTIENE LECHE. CONTIENE LACTOSA. CONTIENE PESCADO. CONTIENE SOYA.",
+    "nutritionInfo": {
+      "servingSize": "1.00 g (2 cápsulas)",
+      "servingsPerContainer": 45,
+      "energy": "7 kJ (2 kcal)",
+      "energyFromFat": "0 kJ (0 kcal)",
+      "rows": [
+        [
+          "Grasa total",
+          "0 g",
+          "0%"
+        ],
+        [
+          "Ácidos grasos saturados",
+          "0 g",
+          "0%"
+        ],
+        [
+          "Colesterol",
+          "0 mg",
+          "0%"
+        ],
+        [
+          "Sodio",
+          "0 mg",
+          "0%"
+        ],
+        [
+          "Carbohidratos totales",
+          "< 1 g",
+          "< 1%"
+        ],
+        [
+          "Fibra dietaria",
+          "0 g",
+          "0%"
+        ],
+        [
+          "Proteína",
+          "< 1 g",
+          "< 1%"
+        ],
+        [
+          "Calostro liofilizado",
+          "400 mg",
+          null
+        ],
+        [
+          "Omega 3 (DHA y EPA)",
+          "300 mg",
+          null
+        ],
+        [
+          "Vitamina C",
+          "60 mg",
+          "60%"
+        ],
+        [
+          "Vitamina B3",
+          "18 mg",
+          "120%"
+        ],
+        [
+          "Vitamina B6",
+          "2.00 mg",
+          "154%"
+        ],
+        [
+          "Vitamina B2",
+          "1.60 mg",
+          "133%"
+        ],
+        [
+          "Vitamina B1",
+          "1.40 mg",
+          "117%"
+        ],
+        [
+          "Vitamina A",
+          "800 µg",
+          "100%"
+        ],
+        [
+          "Vitamina B12",
+          "1 µg",
+          "42%"
+        ]
+      ],
+      "footnote": "Los porcentajes de los valores diarios están basados en una dieta de 8 380 kJ (2 000 kcal)."
+    },
+    "warnings": "Manténgase fuera del alcance de los niños. El producto no es adecuado para ser consumido como única fuente de alimento. No superar la dosis diaria recomendada. Manténgase en un lugar fresco y seco. Este producto podrá ser consumido por niños mayores a 12 años y adultos sanos mayores a 18 años.",
+    "images": [
+      "products/calostrovit-advanced/frente.webp",
+      "products/calostrovit-advanced/mano.webp",
+      "products/calostrovit-advanced/reverso-beneficios.webp",
+      "products/calostrovit-advanced/reverso-tabla-nutricional.webp"
+    ],
+    "variants": [
+      {
+        "name": "Único",
+        "slug": "unico",
+        "image": "products/calostrovit-advanced/frente.webp"
+      }
+    ],
+    "sourceFiles": [
+      "CALOSTROVIT ADVANCED- CAPSULAS/Calostrovit Advanced frente.png",
+      "CALOSTROVIT ADVANCED- CAPSULAS/botella y mano.png",
+      "CALOSTROVIT ADVANCED- CAPSULAS/Calostrovit Advanced derecha.png",
+      "CALOSTROVIT ADVANCED- CAPSULAS/Calostrovit Advanced izquierda.png"
+    ],
+    "notes": "Notificación sanitaria No. 43497-ALN-0624. Etiqueta dice 'Tomar 2 cápsula' y 'Vitmaina C' (erratas del empaque, corregidas en usage/ingredients). 'Pastillas sin brillo.png' de esta carpeta es idéntico (md5) al de MYO INOSITOL: es foto de Inositol, no se usó. Categoría 'inmunidad' por el beneficio de sistema inmunitario; también encaja en 'vitaminas-y-minerales'. La dueña lo anunció como 'Calostrovit cápsulas adultos'."
+  },
+  {
+    "slug": "calostrovit-polvo",
+    "name": "Calostrovit Polvo",
+    "categorySlug": "ninos",
+    "presentation": "Tarro 250 g (polvo)",
+    "shortDescription": "El tarrito de los peques: calostro, Omega-3, vitaminas y minerales en polvo con sabores que les encantan.",
+    "benefits": [
+      "Producto para niños +2 años",
+      "Omega-3 (DHA y EPA)",
+      "Calostro",
+      "Vitaminas y minerales (Calcio, B1, B2, B3, B6, B12, A, C y Magnesio)",
+      "Contiene edulcorante no calórico"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": "Este producto contiene edulcorante no calórico.",
+    "images": [
+      "products/calostrovit-polvo/tarro-fresa-blueberry.webp",
+      "products/calostrovit-polvo/tarro-helado-de-chicle.webp",
+      "products/calostrovit-polvo/tarro-banano-manzana.webp",
+      "products/calostrovit-polvo/tarro-helado-de-vainilla.webp"
+    ],
+    "variants": [
+      {
+        "name": "Fresa - Blueberry",
+        "slug": "fresa-blueberry",
+        "image": "products/calostrovit-polvo/tarro-fresa-blueberry.webp"
+      },
+      {
+        "name": "Helado de chicle",
+        "slug": "helado-de-chicle",
+        "image": "products/calostrovit-polvo/tarro-helado-de-chicle.webp"
+      },
+      {
+        "name": "Banano manzana",
+        "slug": "banano-manzana",
+        "image": "products/calostrovit-polvo/tarro-banano-manzana.webp"
+      },
+      {
+        "name": "Helado de vainilla",
+        "slug": "helado-de-vainilla",
+        "image": "products/calostrovit-polvo/tarro-helado-de-vainilla.webp"
+      }
+    ],
+    "sourceFiles": [
+      "CALOSTROVIT- POLVO/MOCKUP-MUNAVI-TARRO-FRESA.png",
+      "CALOSTROVIT- POLVO/MOCKUP-MUNAVI-TARRO-HELADO-CHICLE.png",
+      "CALOSTROVIT- POLVO/MOCKUP-MUNAVI-TARRO-MANZANA.png",
+      "CALOSTROVIT- POLVO/MOCKUP-MUNAVI-TARRO-VAINILLA.png"
+    ],
+    "notes": "En la etiqueta el logo dice 'Calostro Vit'. Los sabores reales de la etiqueta difieren de los nombres de archivo: FRESA = 'Fresa - Blueberry', MANZANA = 'Banano Manzana', VAINILLA = 'Helado de Vainilla'. Solo hay frente: faltan modo de uso, ingredientes, tabla nutricional y notificación sanitaria. La etiqueta dice 'ESTE PRODUCO' (errata). Los PNG traen manchas blancas semitransparentes detrás del tarro (artefacto del mockup); sobre fondo blanco no se notan."
+  },
+  {
+    "slug": "citrato-de-magnesio-capsulas",
+    "name": "Citrato de Magnesio Cápsulas",
+    "categorySlug": "vitaminas-y-minerales",
+    "presentation": "Frasco 120 cápsulas x 500 mg (60 g)",
+    "shortDescription": "Tu dosis de citrato de magnesio en cápsulas, fácil de llevar a donde vayas.",
+    "benefits": [
+      "2000 mg por porción",
+      "Descanso",
+      "Claridad mental",
+      "Metabolismo energético",
+      "Músculos y huesos saludables",
+      "120 cápsulas x 500 mg"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/citrato-de-magnesio-capsulas/frente.webp",
+      "products/citrato-de-magnesio-capsulas/mano.webp"
+    ],
+    "variants": [
+      {
+        "name": "Único",
+        "slug": "unico",
+        "image": "products/citrato-de-magnesio-capsulas/frente.webp"
+      }
+    ],
+    "sourceFiles": [
+      "CITRATO DE MAGNESIO/CITRATO CAPSULAS/Citrato de magnesio botella.png",
+      "CITRATO DE MAGNESIO/CITRATO CAPSULAS/Citrato de magnesio mano.png"
+    ],
+    "notes": "Solo hay foto del frente: faltan modo de uso, ingredientes, tabla nutricional, advertencias y notificación sanitaria. Se separó de la versión en polvo porque cambian contenido, uso y fotos; si se prefiere un solo producto con variantes 'Cápsulas'/'Polvo', unificar."
+  },
+  {
+    "slug": "citrato-de-magnesio-polvo",
+    "name": "Citrato de Magnesio Polvo",
+    "categorySlug": "vitaminas-y-minerales",
+    "presentation": "Tarro 200 g (polvo), 100 días de consumo",
+    "shortDescription": "Citrato de magnesio puro en polvo para mezclar en tu bebida favorita, una vez al día.",
+    "benefits": [
+      "Puro 100%",
+      "2000 mg por porción",
+      "100 días de consumo",
+      "Descanso",
+      "Claridad mental",
+      "Metabolismo energético",
+      "Músculos y huesos saludables",
+      "Libre de gluten",
+      "Libre de artificiales",
+      "Libre de azúcar",
+      "Sistema nervioso: contribuye al funcionamiento normal del sistema nervioso",
+      "Energía: ayuda a combatir el cansancio y la fatiga",
+      "Metabolismo: contribuye al metabolismo energético normal"
+    ],
+    "usage": "1. Disolver una cucharada (2.00 g) de Citrato de Magnesio en agua, jugo o bebida de preferencia. 2. Mezclar bien. 3. Ingerir una vez al día.",
+    "ingredients": "Citrato de Magnesio.",
+    "nutritionInfo": {
+      "servingSize": "2.00 g (1 cucharada)",
+      "servingsPerContainer": 100,
+      "energy": "0 kJ (0 kcal)",
+      "energyFromFat": "0 kJ (0 kcal)",
+      "rows": [
+        [
+          "Grasa total",
+          "0 g",
+          "0%"
+        ],
+        [
+          "Ácidos grasos saturados",
+          "0 g",
+          "0%"
+        ],
+        [
+          "Colesterol",
+          "0 mg",
+          "0%"
+        ],
+        [
+          "Sodio",
+          "0 mg",
+          "0%"
+        ],
+        [
+          "Carbohidratos totales",
+          "0 g",
+          "0%"
+        ],
+        [
+          "Azúcares",
+          "0 g",
+          "0%"
+        ],
+        [
+          "Proteína",
+          "0 g",
+          "0%"
+        ],
+        [
+          "Magnesio",
+          "225 mg",
+          "75%"
+        ]
+      ],
+      "footnote": "Los porcentajes de los valores diarios están basados en una dieta de 8 380 kJ (2 000 kcal)."
+    },
+    "warnings": "Manténgase fuera del alcance de los niños. El producto no es adecuado para ser consumido como única fuente de alimento. No superar la dosis diaria recomendada. Este producto podrá ser consumido por adultos sanos mayores a 18 años. Manténgase en un lugar fresco y seco.",
+    "images": [
+      "products/citrato-de-magnesio-polvo/frente.webp",
+      "products/citrato-de-magnesio-polvo/reverso-modo-de-uso.webp",
+      "products/citrato-de-magnesio-polvo/reverso-tabla-nutricional.webp"
+    ],
+    "variants": [
+      {
+        "name": "Único",
+        "slug": "unico",
+        "image": "products/citrato-de-magnesio-polvo/frente.webp"
+      }
+    ],
+    "sourceFiles": [
+      "CITRATO DE MAGNESIO/CITRATO POLVO/Citrato de magnesio polvo 3.png",
+      "CITRATO DE MAGNESIO/CITRATO POLVO/Citrato de magnesio polvo 2.png",
+      "CITRATO DE MAGNESIO/CITRATO POLVO/Citrato de magnesio polvo 1.png"
+    ],
+    "notes": "Notificación sanitaria No. 42536-ALN-0424. La etiqueta dice 'Ayuda combartir el cansancio' (errata). 'Citrato polvo' no aparece en la lista de WhatsApp (solo 'Citrato cápsulas'): confirmar que se vende."
+  },
+  {
+    "slug": "colartrim",
+    "name": "Colartrim",
+    "categorySlug": "colagenos",
+    "presentation": "Lata 300 g (polvo)",
+    "shortDescription": "Colágeno con magnesio, calcio y vitaminas D3 y K2 en una lata llena de sabor.",
+    "benefits": [
+      "Colágeno",
+      "Magnesio",
+      "Calcio",
+      "Vitaminas D3 y K2",
+      "D3 100 mcg (4000 IU)",
+      "Gluten free",
+      "Lactose free",
+      "Contiene edulcorante no calórico"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": "Este producto contiene edulcorante no calórico.",
+    "images": [
+      "products/colartrim/lata-fresa.webp",
+      "products/colartrim/lata-guanabana.webp",
+      "products/colartrim/lata-vainilla.webp"
+    ],
+    "variants": [
+      {
+        "name": "Fresa",
+        "slug": "fresa",
+        "image": "products/colartrim/lata-fresa.webp"
+      },
+      {
+        "name": "Guanábana",
+        "slug": "guanabana",
+        "image": "products/colartrim/lata-guanabana.webp"
+      },
+      {
+        "name": "Vainilla",
+        "slug": "vainilla",
+        "image": "products/colartrim/lata-vainilla.webp"
+      }
+    ],
+    "sourceFiles": [
+      "COLARTRIM/colartrim fresa.png",
+      "COLARTRIM/colartrim guanabana.png",
+      "COLARTRIM/colartrim vainilla 2025.png"
+    ],
+    "notes": "Solo frente: faltan modo de uso, ingredientes, tabla nutricional y advertencias. La etiqueta escribe 'Guanabana' sin tilde. ¿Es este el 'Colágeno + Magnesio' que la dueña anunció en el grupo 3? Confirmar."
+  },
+  {
+    "slug": "collagen-advanced",
+    "name": "Collagen Advanced",
+    "categorySlug": "colagenos",
+    "presentation": "Tarro 400 g (polvo), también en caja",
+    "shortDescription": "Colágeno hidrolizado con vitamina C, calcio, magnesio y zinc en cinco sabores para consentirte cada día.",
+    "benefits": [
+      "Colágeno hidrolizado",
+      "Vitamina C",
+      "Calcio",
+      "Magnesio",
+      "Zinc",
+      "90% proteína",
+      "Exclusive formula",
+      "Contiene edulcorante no calórico"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": "Contiene edulcorante no calórico.",
+    "images": [
+      "products/collagen-advanced/envase-canela-y-avellana.webp",
+      "products/collagen-advanced/envase-frutos-rojos.webp",
+      "products/collagen-advanced/envase-pina-colada.webp",
+      "products/collagen-advanced/envase-sin-sabor.webp",
+      "products/collagen-advanced/envase-vainilla-francesa.webp",
+      "products/collagen-advanced/caja-canela-y-avellana.webp",
+      "products/collagen-advanced/caja-frutos-rojos.webp",
+      "products/collagen-advanced/caja-pina-colada.webp",
+      "products/collagen-advanced/caja-sin-sabor.webp",
+      "products/collagen-advanced/caja-vainilla-francesa.webp"
+    ],
+    "variants": [
+      {
+        "name": "Canela y avellana",
+        "slug": "canela-y-avellana",
+        "image": "products/collagen-advanced/envase-canela-y-avellana.webp"
+      },
+      {
+        "name": "Frutos rojos",
+        "slug": "frutos-rojos",
+        "image": "products/collagen-advanced/envase-frutos-rojos.webp"
+      },
+      {
+        "name": "Piña colada",
+        "slug": "pina-colada",
+        "image": "products/collagen-advanced/envase-pina-colada.webp"
+      },
+      {
+        "name": "Sin sabor",
+        "slug": "sin-sabor",
+        "image": "products/collagen-advanced/envase-sin-sabor.webp"
+      },
+      {
+        "name": "Vainilla francesa",
+        "slug": "vainilla-francesa",
+        "image": "products/collagen-advanced/envase-vainilla-francesa.webp"
+      }
+    ],
+    "sourceFiles": [
+      "COLLAGEN ADVANCED/ENVASES/Collagen Advanced (Canela y avellana).png",
+      "COLLAGEN ADVANCED/ENVASES/Collagen Advanced (Frutos rojos).png",
+      "COLLAGEN ADVANCED/ENVASES/Collagen Advanced (Piña colada).png",
+      "COLLAGEN ADVANCED/ENVASES/Collagen Advanced (Sin sabor).png",
+      "COLLAGEN ADVANCED/ENVASES/Collagen Advanced (Vainilla Francesa).png",
+      "COLLAGEN ADVANCED/CAJA/Collagen Advanced caja (Canela y avellana).png",
+      "COLLAGEN ADVANCED/CAJA/Collagen Advanced caja (Frutos rojos).png",
+      "COLLAGEN ADVANCED/CAJA/Collagen Advanced caja (Piña colada).png",
+      "COLLAGEN ADVANCED/CAJA/Collagen Advanced caja (sin sabor).png",
+      "COLLAGEN ADVANCED/CAJA/Collagen Advanced caja (Vainilla francesa).png"
+    ],
+    "notes": "La etiqueta dice '90% Proteína' (no 99%). Solo frentes: faltan modo de uso, ingredientes, tabla nutricional y advertencias. A las cajas se les limpió el halo blanco semitransparente del mockup. Imagen de la caja por sabor: web/collagen-advanced/caja-<slug>.webp."
+  },
+  {
+    "slug": "collagen-power",
+    "name": "Collagen Power",
+    "categorySlug": "colagenos",
+    "presentation": "Lata 300 g (polvo)",
+    "shortDescription": "Colágeno con glucosamina, magnesio, zinc y vitamina C para quienes viven en movimiento.",
+    "benefits": [
+      "Colágeno",
+      "Glucosamina",
+      "Magnesio",
+      "Zinc",
+      "Vitamina C",
+      "Libre de gluten",
+      "Libre de lactosa",
+      "Contiene edulcorante no calórico"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": "Este producto contiene edulcorante no calórico.",
+    "images": [
+      "products/collagen-power/lata-chocolate.webp",
+      "products/collagen-power/lata-fresa.webp",
+      "products/collagen-power/lata-oreo.webp",
+      "products/collagen-power/lata-vainilla.webp"
+    ],
+    "variants": [
+      {
+        "name": "Chocolate",
+        "slug": "chocolate",
+        "image": "products/collagen-power/lata-chocolate.webp"
+      },
+      {
+        "name": "Fresa",
+        "slug": "fresa",
+        "image": "products/collagen-power/lata-fresa.webp"
+      },
+      {
+        "name": "Oreo",
+        "slug": "oreo",
+        "image": "products/collagen-power/lata-oreo.webp"
+      },
+      {
+        "name": "Vainilla",
+        "slug": "vainilla",
+        "image": "products/collagen-power/lata-vainilla.webp"
+      }
+    ],
+    "sourceFiles": [
+      "COLLAGEN POWER/collagen power chocolate.png",
+      "COLLAGEN POWER/collagen power fresa.png",
+      "COLLAGEN POWER/collagen power oreo.png",
+      "COLLAGEN POWER/collagen power vainilla.png"
+    ],
+    "notes": "Solo frente: faltan modo de uso, ingredientes, tabla nutricional y advertencias. Va en 'colagenos', pero por la imagen deportiva también podría ir en 'deporte' (si el front permite varias categorías, usar ambas). 'Oreo' es marca registrada: revisar si conviene usarla en la web."
+  },
+  {
+    "slug": "creatina",
+    "name": "Creatina Monohidratada",
+    "categorySlug": "deporte",
+    "presentation": "Tarro 300 g (10.58 oz), 60 servidas",
+    "shortDescription": "Creatina monohidratada 100% pura para darle todo a tu entrenamiento.",
+    "benefits": [
+      "Energía",
+      "Fuerza",
+      "Resistencia",
+      "60 servidas",
+      "5 g de creatina por servida",
+      "100% pureza"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/creatina/tarro-sin-sabor.webp",
+      "products/creatina/tarro-blueberry.webp",
+      "products/creatina/tarro-fruit-punch.webp"
+    ],
+    "variants": [
+      {
+        "name": "Sin sabor",
+        "slug": "sin-sabor",
+        "image": "products/creatina/tarro-sin-sabor.webp"
+      },
+      {
+        "name": "Blueberry",
+        "slug": "blueberry",
+        "image": "products/creatina/tarro-blueberry.webp"
+      },
+      {
+        "name": "Fruit punch",
+        "slug": "fruit-punch",
+        "image": "products/creatina/tarro-fruit-punch.webp"
+      }
+    ],
+    "sourceFiles": [
+      "CREATINA/sin sabor.png",
+      "CREATINA/blueberry.png",
+      "CREATINA/fruitpunch.png"
+    ],
+    "notes": "Se usó CREATINA/ (se ignoró _CREATINA_vieja_jpg). Solo frente: faltan modo de uso, ingredientes, tabla nutricional y advertencias. Categoría nueva 'deporte' (no estaba en la lista de la dueña)."
+  },
+  {
+    "slug": "vitamina-d3-k2",
+    "name": "Vitamina D3 + K2",
+    "categorySlug": "vitaminas-y-minerales",
+    "presentation": "Frasco 60 cápsulas x 540 mg (32.40 g)",
+    "shortDescription": "Vitamina D3 4000 UI con K2 en cápsulas, una aliada para tus huesos de cada día.",
+    "benefits": [
+      "Vitamina D3 4000 UI",
+      "K2 100 mcg",
+      "Absorción y utilización del calcio",
+      "60 cápsulas x 540 mg a base de vitamina D y K"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/vitamina-d3-k2/frente.webp"
+    ],
+    "variants": [
+      {
+        "name": "Único",
+        "slug": "unico",
+        "image": "products/vitamina-d3-k2/frente.webp"
+      }
+    ],
+    "sourceFiles": [
+      "D3 Y K2/AJUSTE D3..png"
+    ],
+    "notes": "Única foto: 1402x1122, SIN transparencia y con fondo negro (no combina con el resto); pedir PNG con fondo transparente o de mayor resolución. La etiqueta dice 'Absorción y y utilización del calcio' (errata). Solo frente: faltan modo de uso, ingredientes, tabla nutricional y advertencias."
+  },
+  {
+    "slug": "defensevit",
+    "name": "DefenseVit",
+    "categorySlug": "inmunidad",
+    "presentation": "Botella 500 ml (líquido), con caja",
+    "shortDescription": "Vitamina C, D3 y zinc en un líquido sabor a naranja para cuidar tus defensas en familia.",
+    "benefits": [
+      "Vitamina C",
+      "Vitamina D3",
+      "Zinc",
+      "Fortalece tu sistema inmunológico",
+      "Mejora la función inmunológica",
+      "Esencial para la salud de los huesos",
+      "Mayor resistencia física y fuerza muscular",
+      "Sabor a naranja"
+    ],
+    "usage": "Tomar 30 ml (2 cucharadas) al día.",
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": "Mantener en lugar fresco y seco. Una vez abierto mantener en refrigeración. Manténgase fuera del alcance de los niños. El producto no es adecuado para ser consumido como única fuente de alimento. No superar la dosis diaria recomendada. Este producto contiene edulcorante no calórico.",
+    "images": [
+      "products/defensevit/botella.webp",
+      "products/defensevit/caja.webp"
+    ],
+    "variants": [
+      {
+        "name": "Naranja",
+        "slug": "naranja",
+        "image": "products/defensevit/botella.webp"
+      }
+    ],
+    "sourceFiles": [
+      "DEFENSEVIT/botella- defensvit.png",
+      "DEFENSEVIT/Caja DefenseVit mockup.png"
+    ],
+    "notes": "El panel trasero de la caja de DefenseVit dice 'La fórmula de Propoléo ha sido desarrollada desde hace más 13 años...': texto copiado de Propóleo, avisar a la dueña. La notificación sanitaria aparece vacía en el mockup. Faltan ingredientes y tabla nutricional. La caja tiene fondo gris (mockup), por eso es la imagen secundaria. Única variante = sabor naranja."
+  },
+  {
+    "slug": "detox-fiber",
+    "name": "Detox Fiber",
+    "categorySlug": "digestivos-y-detox",
+    "presentation": "Tarro 400 g (polvo)",
+    "shortDescription": "Fibras y prebióticos en polvo con ingredientes de la naturaleza para sentirte ligera.",
+    "benefits": [
+      "Fibras + prebióticos",
+      "Inulina",
+      "Moringa",
+      "Alfalfa",
+      "Cúrcuma",
+      "Senna",
+      "Alcachofa",
+      "Linaza",
+      "Chía"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/detox-fiber/tarro.webp"
+    ],
+    "variants": [
+      {
+        "name": "Único",
+        "slug": "unico",
+        "image": "products/detox-fiber/tarro.webp"
+      }
+    ],
+    "sourceFiles": [
+      "DETOX FIBER/Detox Fiber_empaque.png"
+    ],
+    "notes": "Solo frente: faltan modo de uso, ingredientes completos, tabla nutricional y advertencias (la senna normalmente lleva advertencias: pedirlas). Sin sabor indicado."
+  },
+  {
+    "slug": "hepapharm",
+    "name": "Hepa Pharm",
+    "categorySlug": "digestivos-y-detox",
+    "presentation": "Frasco 60 cápsulas x 500 mg (30 g), con caja",
+    "shortDescription": "Silimarina, coenzima Q10, colina y vitaminas en cápsulas para tu rutina de bienestar.",
+    "benefits": [
+      "Silimarina",
+      "Coenzima Q10",
+      "Bitartrato de colina",
+      "Vitaminas A, B1, B2, B3, B6, B12, C"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/hepapharm/frente.webp",
+      "products/hepapharm/caja.webp"
+    ],
+    "variants": [
+      {
+        "name": "Único",
+        "slug": "unico",
+        "image": "products/hepapharm/frente.webp"
+      }
+    ],
+    "sourceFiles": [
+      "HEPHARM/Frente.png",
+      "HEPHARM/caja hepapharm.png"
+    ],
+    "notes": "La carpeta se llama 'HEPHARM' y WhatsApp dice 'Hepapharm'; la etiqueta dice 'HEPA PHARM'. La tabla nutricional se ve en el lateral de la caja, pero en baja resolución, con perspectiva y columnas desalineadas (porción 500 mg = 1 cápsula, 60 porciones, 0 kcal; semilla de cardo mariano/silimarina ~190 mg, bitartrato de colina ~82.50 mg...). No se transcribió: pedir la tabla en limpio. Faltan modo de uso, ingredientes y advertencias. Se puso en 'digestivos-y-detox' por la silimarina (hígado)."
+  },
+  {
+    "slug": "multivitaminico",
+    "name": "Multivitamínico",
+    "categorySlug": "vitaminas-y-minerales",
+    "presentation": "Lata 300 g (polvo)",
+    "shortDescription": "Multivitamínico en polvo con guaraná que vitaliza, fortalece y energiza tu día.",
+    "benefits": [
+      "Vitaliza, fortalece y energiza",
+      "Con extracto de semillas de guaraná",
+      "Gluten free",
+      "Lactose free"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/multivitaminico/lata-frutos-amarillos.webp",
+      "products/multivitaminico/lata-vainilla.webp",
+      "products/multivitaminico/lata-cereza.webp",
+      "products/multivitaminico/lata-jamaica.webp",
+      "products/multivitaminico/lata-tamarindo.webp"
+    ],
+    "variants": [
+      {
+        "name": "Frutos amarillos",
+        "slug": "frutos-amarillos",
+        "image": "products/multivitaminico/lata-frutos-amarillos.webp"
+      },
+      {
+        "name": "Vainilla",
+        "slug": "vainilla",
+        "image": "products/multivitaminico/lata-vainilla.webp"
+      },
+      {
+        "name": "Cereza",
+        "slug": "cereza",
+        "image": "products/multivitaminico/lata-cereza.webp"
+      },
+      {
+        "name": "Jamaica",
+        "slug": "jamaica",
+        "image": "products/multivitaminico/lata-jamaica.webp"
+      },
+      {
+        "name": "Tamarindo",
+        "slug": "tamarindo",
+        "image": "products/multivitaminico/lata-tamarindo.webp"
+      }
+    ],
+    "sourceFiles": [
+      "MULTIVITAMINICO/MULTIVITAMINICO_frutos amarillos.png",
+      "MULTIVITAMINICO/MULTIVITAMINICO_vanilla.png",
+      "MULTIVITAMINICO/fresa.png",
+      "MULTIVITAMINICO/jamaica.png",
+      "MULTIVITAMINICO/tamarindo.png"
+    ],
+    "notes": "OJO: el archivo 'fresa.png' muestra 'SABOR A CEREZA' en la etiqueta; se tomó Cereza. Frutos amarillos y Vainilla dicen 'Este producto contine edulcorante no calórico' (errata); Cereza, Jamaica y Tamarindo llevan el sello 'Endulzado con stevia'. 300G se lee completo solo en dos latas (en las otras lo corta la curvatura). Solo frente: faltan modo de uso, ingredientes (lista de vitaminas), tabla nutricional y advertencias."
+  },
+  {
+    "slug": "myo-d-chiro-inositol",
+    "name": "Myo & D-Chiro Inositol",
+    "categorySlug": "salud-hormonal",
+    "presentation": "Frasco 120 cápsulas (68.40 g)",
+    "shortDescription": "Myo y D-Chiro Inositol en proporción 40:1 para acompañarte en tu equilibrio hormonal.",
+    "benefits": [
+      "Equilibrio hormonal",
+      "Función ovárica saludable",
+      "Ratio 40:1",
+      "120 cápsulas a base de Myo y D-Chiro Inositol"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/myo-d-chiro-inositol/frasco-capsulas.webp",
+      "products/myo-d-chiro-inositol/mano.webp"
+    ],
+    "variants": [
+      {
+        "name": "Único",
+        "slug": "unico",
+        "image": "products/myo-d-chiro-inositol/frasco-capsulas.webp"
+      }
+    ],
+    "sourceFiles": [
+      "MYO INOSITOL & D-CHIRO/Pastillas sin brillo.png",
+      "MYO INOSITOL & D-CHIRO/Mockup1 mano sin brillo.png"
+    ],
+    "notes": "'Mockup1 mano.png' y 'mano.png' son casi iguales a 'Mockup1 mano sin brillo.png' (variaciones de brillo); no se agregaron a la galería. No se ve el peso por cápsula. Solo frente: faltan modo de uso, ingredientes, tabla nutricional y advertencias."
+  },
+  {
+    "slug": "propoleo",
+    "name": "Propóleo",
+    "categorySlug": "inmunidad",
+    "presentation": "Botella 500 ml (líquido), con caja",
+    "shortDescription": "Propóleo con vitamina C, jengibre y ajo sabor a menta, endulzado con stevia.",
+    "benefits": [
+      "Propóleo",
+      "Vitamina C",
+      "Jengibre",
+      "Ajo",
+      "Endulzado con stevia",
+      "Sabor a menta",
+      "Antibiótico natural y expectorante",
+      "Alivia afecciones del sistema respiratorio como tos, asma, gripe, amigdalitis"
+    ],
+    "usage": "Tomar una cucharada (15 ml) al día, disolver en un vaso (200 ml) con agua o tu bebida favorita.",
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": "Este producto podrá ser consumido por adultos mayores a 18 años. Manténgase fuera del alcance de los niños. Modo de conservación: mantener en lugar fresco y seco; una vez abierto mantener en refrigeración. El producto no es adecuado para ser consumido como única fuente de alimento. No superar la dosis diaria recomendada.",
+    "images": [
+      "products/propoleo/botella.webp",
+      "products/propoleo/caja.webp"
+    ],
+    "variants": [
+      {
+        "name": "Menta",
+        "slug": "menta",
+        "image": "products/propoleo/botella.webp"
+      }
+    ],
+    "sourceFiles": [
+      "PROPOLEO/Copia de Etiqueta Propóleo mockup.png",
+      "PROPOLEO/Copia de Caja Propóleo mockup.png"
+    ],
+    "notes": "Descripción de la caja: 'Suplemento alimenticio líquido a base de vitamina C, infusiones vegetales y propóleo' (no hay lista de ingredientes con cantidades). REVISAR antes de publicar o pautar: 'Antibiótico natural' y 'ayudan en el tratamiento de afecciones... asma, bronquitis' son claims terapéuticos; se transcribieron tal cual de la etiqueta. La notificación sanitaria aparece vacía en el mockup. Falta la tabla nutricional."
+  },
+  {
+    "slug": "gel-sculptor",
+    "name": "Gel Sculptor",
+    "categorySlug": "cuidado-corporal",
+    "presentation": "Tarro 500 g (gel)",
+    "shortDescription": "Gel corporal con centella asiática y eucalipto para tu rutina de autocuidado.",
+    "benefits": [
+      "Moldea, tonifica y reduce medidas",
+      "Centella asiática y eucalipto",
+      "Reafirma la piel",
+      "Atenúa la celulitis",
+      "Quemador de grasa localizada",
+      "Mejora la flacidez"
+    ],
+    "usage": null,
+    "ingredients": null,
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/gel-sculptor/tarro.webp"
+    ],
+    "variants": [
+      {
+        "name": "Único",
+        "slug": "unico",
+        "image": "products/gel-sculptor/tarro.webp"
+      }
+    ],
+    "sourceFiles": [
+      "SCULPTOR GEL/Mockup Gel Sculptor Munavi2.png"
+    ],
+    "notes": "Es un producto tópico, no un suplemento: categoría nueva 'cuidado-corporal'. Solo frente: faltan modo de uso, ingredientes y advertencias (en un gel con eucalipto es importante pedirlas). Los claims de la etiqueta ('reduce medidas', 'quemador de grasa') son fuertes: revisar antes de usarlos en ads."
+  }
+]
