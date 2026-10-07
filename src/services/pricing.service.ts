@@ -145,6 +145,13 @@ export async function buildQuote(input: {
     }
 
     const unitPrice = product.prices[PRICE_KEY[method]];
+    // Hay productos publicados antes de tener precio; sin este corte saldría una orden en $0.
+    if (!unitPrice || unitPrice <= 0) {
+      throw new CustomError(
+        `«${product.name}» todavía no tiene precio. Escríbenos por WhatsApp y te ayudamos.`,
+        400,
+      );
+    }
     const lineSubtotal = unitPrice * line.quantity;
     const volumeDiscountPercent = volumePercentFor(product, line.quantity);
     const lineDiscount = Math.round((lineSubtotal * volumeDiscountPercent) / 100);
