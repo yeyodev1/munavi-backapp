@@ -14,7 +14,7 @@ const DEFAULT_SUBSCRIBE_PERCENT = 20;
  */
 export async function getSettings(): Promise<ISettings> {
   const existing = await Settings.findOne({ key: SETTINGS_KEY }).lean<ISettings>();
-  if (existing) return existing;
+  if (existing) return withDefaults(existing);
 
   try {
     await Settings.create({ key: SETTINGS_KEY });
@@ -37,7 +37,21 @@ export async function getSettings(): Promise<ISettings> {
 
   const created = await Settings.findOne({ key: SETTINGS_KEY }).lean<ISettings>();
   if (!created) throw new CustomError("No se pudieron cargar los ajustes de la tienda", 500);
-  return created;
+  return withDefaults(created);
+}
+
+// lean() no aplica los defaults del schema: un documento creado antes de que
+// existieran estos campos llegaría sin ellos y la tienda no sabría que la promo está apagada.
+function withDefaults(settings: ISettings): ISettings {
+  return {
+    ...settings,
+    heroSlides: settings.heroSlides ?? [],
+    volumePromo: {
+      isActive: Boolean(settings.volumePromo?.isActive),
+      tiers: settings.volumePromo?.tiers ?? [],
+    },
+    communityPhotos: settings.communityPhotos ?? [],
+  };
 }
 
 /** Lo que ve la tienda: sin el correo interno ni el código del cupón de suscripción. */
