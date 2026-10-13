@@ -41,6 +41,10 @@ export interface IProduct {
   volumeDiscounts: IVolumeDiscount[];
   isFeatured: boolean;
   isBestSeller: boolean;
+  // Sale en "Novedades del mes" del inicio.
+  isNewArrival: boolean;
+  // Cuenta para "Compra más, ahorra más" (descuento por cantidad de todo el pedido).
+  inVolumePromo: boolean;
   isPublished: boolean;
   order: number;
   createdAt?: Date;
@@ -95,6 +99,8 @@ const productSchema = new Schema<IProduct>(
     volumeDiscounts: { type: [volumeDiscountSchema], default: [] },
     isFeatured: { type: Boolean, default: false },
     isBestSeller: { type: Boolean, default: false },
+    isNewArrival: { type: Boolean, default: false },
+    inVolumePromo: { type: Boolean, default: true },
     isPublished: { type: Boolean, default: false, index: true },
     order: { type: Number, default: 0 },
   },
