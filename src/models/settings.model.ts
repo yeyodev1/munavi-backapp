@@ -5,6 +5,8 @@ export interface IHeroSlide {
   title: string;
   subtitle: string;
   image: IImage | null;
+  // Versión vertical para celular; sin ella el celular recorta la imagen de escritorio.
+  mobileImage: IImage | null;
   ctaLabel: string;
   ctaTo: string;
 }
@@ -37,6 +39,7 @@ const heroSlideSchema = new Schema<IHeroSlide>(
     title: { type: String, default: "" },
     subtitle: { type: String, default: "" },
     image: { type: imageSchema, default: null },
+    mobileImage: { type: imageSchema, default: null },
     ctaLabel: { type: String, default: "" },
     ctaTo: { type: String, default: "" },
   },
