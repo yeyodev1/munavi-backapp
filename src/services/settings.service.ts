@@ -1,6 +1,7 @@
 import { CustomError } from "../errors/customError.error";
 import { Coupon } from "../models/coupon.model";
 import { ISettings, Settings } from "../models/settings.model";
+import { parseVolumeDiscounts } from "./product.service";
 
 const SETTINGS_KEY = "main";
 const DEFAULT_SUBSCRIBE_COUPON = "TEQUIEROVIDA20";
@@ -116,6 +117,30 @@ export async function updateSettings(body: any): Promise<ISettings> {
       ctaLabel: str(slide?.ctaLabel),
       ctaTo: str(slide?.ctaTo),
     }));
+  }
+
+  if (body?.volumePromo !== undefined) {
+    const v = body.volumePromo ?? {};
+    const tiers =
+      v.tiers !== undefined ? parseVolumeDiscounts(v.tiers) : (current.volumePromo?.tiers ?? []);
+    const isActive =
+      v.isActive !== undefined ? Boolean(v.isActive) : Boolean(current.volumePromo?.isActive);
+    if (isActive && tiers.length === 0) {
+      throw new CustomError(
+        "Agrega al menos un nivel de descuento antes de activar la promoción",
+        400,
+      );
+    }
+    update.volumePromo = { isActive, tiers };
+  }
+
+  if (body?.communityPhotos !== undefined) {
+    if (!Array.isArray(body.communityPhotos)) {
+      throw new CustomError("Las fotos de la comunidad deben ser una lista", 400);
+    }
+    update.communityPhotos = body.communityPhotos
+      .map((photo: any) => ({ image: image(photo?.image), link: str(photo?.link) }))
+      .filter((photo: { image: unknown }) => photo.image);
   }
 
   const updated = await Settings.findOneAndUpdate(
