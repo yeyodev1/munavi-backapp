@@ -112,6 +112,7 @@ export async function updateSettings(body: any): Promise<ISettings> {
       title: str(slide?.title),
       subtitle: str(slide?.subtitle),
       image: image(slide?.image),
+      mobileImage: image(slide?.mobileImage),
       ctaLabel: str(slide?.ctaLabel),
       ctaTo: str(slide?.ctaTo),
     }));
