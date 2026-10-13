@@ -832,5 +832,94 @@
       "SCULPTOR GEL/Mockup Gel Sculptor Munavi2.png"
     ],
     "notes": "Es un producto tópico, no un suplemento: categoría nueva 'cuidado-corporal'. Solo frente: faltan modo de uso, ingredientes y advertencias (en un gel con eucalipto es importante pedirlas). Los claims de la etiqueta ('reduce medidas', 'quemador de grasa') son fuertes: revisar antes de usarlos en ads."
+  },
+  {
+    "slug": "colageno-magnesio",
+    "name": "Colágeno + Magnesio",
+    "categorySlug": "colagenos",
+    "presentation": "Polvo · 300 gramos · 30 tomas",
+    "shortDescription": "Colágeno hidrolizado con magnesio, biotina y ácido hialurónico para lucir bella por dentro y por fuera.",
+    "description": "Fórmula pensada para realzar la belleza desde el interior, aportando nutrientes esenciales que promueven una piel firme, cabello saludable y uñas fuertes.",
+    "benefits": [
+      "Mejora la elasticidad de la piel",
+      "Hidrata profundamente la piel",
+      "Fortalece cabello y uñas",
+      "Ayuda a mantener su volumen natural"
+    ],
+    "usage": "1. Disolver una cucharada (10g) en 200 ml de leche, jugo o bebida favorita\n2. Disolver bien",
+    "ingredients": "Ingredientes destacados: Biotina, Magnesio, Ácido hialurónico, Péptidos de colágeno hidrolizado.",
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/colageno-magnesio/latas-sabores.webp"
+    ],
+    "variants": [
+      {
+        "name": "Vainilla",
+        "slug": "vainilla",
+        "image": null
+      },
+      {
+        "name": "Guanábana",
+        "slug": "guanabana",
+        "image": null
+      },
+      {
+        "name": "Fresa",
+        "slug": "fresa",
+        "image": null
+      },
+      {
+        "name": "Frutos rojos",
+        "slug": "frutos-rojos",
+        "image": null
+      },
+      {
+        "name": "Piña",
+        "slug": "pina",
+        "image": null
+      },
+      {
+        "name": "Coco",
+        "slug": "coco",
+        "image": null
+      }
+    ],
+    "sourceFiles": [
+      "catálogo compress- Munavi .pdf (págs. 4-5)"
+    ],
+    "notes": "Datos y foto tomados del catálogo 2026. La foto es el grupo de latas recortado del catálogo: faltan los PNG por sabor."
+  },
+  {
+    "slug": "fit-sculptor",
+    "name": "Fit Sculptor",
+    "categorySlug": "deporte",
+    "presentation": "Cápsulas · 60 cápsulas · 30 días",
+    "shortDescription": "Apoyo metabólico con L-carnitina, cafeína natural y silimarina para más energía, enfoque y quema de grasa.",
+    "description": "Fórmula avanzada de apoyo metabólico y energético que combina L-Carnitina, L-Tirosina, extracto de cardo mariano, cafeína natural, naranja amarga (Citrus aurantium) y capsicum. Diseñada para personas activas que buscan mejorar el enfoque, el rendimiento y la quema de grasa de forma natural. Ideal como complemento a la actividad física o en programas de control de peso.",
+    "benefits": [
+      "Favorece la oxidación de grasas",
+      "Apoya la concentración y el enfoque mental",
+      "Estimula el metabolismo y la energía física",
+      "Protege el hígado y favorece la desintoxicación"
+    ],
+    "usage": "1. Ingerir 2 cápsulas al día con agua o tu bebida favorita\n2. Tomar una cápsula en la mañana y una en la noche.",
+    "ingredients": "Ingredientes destacados: L-Carnitina, L-tirosina, Picolinato de Cromo, Cáscara de naranja amarga, Capsicum annuum en polvo, Anhidrido de Cafeína, Extracto de Semillas de Silybum marianum.",
+    "nutritionInfo": null,
+    "warnings": null,
+    "images": [
+      "products/fit-sculptor/caja-y-frasco.webp"
+    ],
+    "variants": [
+      {
+        "name": "Único",
+        "slug": "unico",
+        "image": null
+      }
+    ],
+    "sourceFiles": [
+      "catálogo compress- Munavi .pdf (págs. 30-31)"
+    ],
+    "notes": "Datos y foto tomados del catálogo 2026. Falta el PNG del frasco solo y la tabla nutricional."
   }
 ]
