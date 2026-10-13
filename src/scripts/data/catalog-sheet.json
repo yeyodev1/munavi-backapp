@@ -1,0 +1,219 @@
+{
+  "colageno-magnesio": {
+    "pvp": 2700,
+    "description": "Fórmula pensada para realzar la belleza desde el interior, aportando nutrientes esenciales que promueven una piel firme, cabello saludable y uñas fuertes.",
+    "benefits": [
+      "Mejora la elasticidad de la piel",
+      "Hidrata profundamente la piel",
+      "Fortalece cabello y uñas",
+      "Ayuda a mantener su volumen natural"
+    ],
+    "usage": "1. Disolver una cucharada (10g) en 200 ml de leche, jugo o bebida favorita\n2. Disolver bien",
+    "presentation": "Polvo · 300 gramos · 30 tomas",
+    "ingredients": "Ingredientes destacados: Biotina, Magnesio, Ácido hialurónico, Péptidos de colágeno hidrolizado."
+  },
+  "collagen-advanced": {
+    "pvp": 4000,
+    "description": "Suplemento nutricional formulado para apoyar el bienestar integral desde adentro. Su combinación de colágeno hidrolizado con magnesio, vitamina C y zinc ayuda a fortalecer articulaciones, mejorar la elasticidad de la piel y favorecer la salud del cabello y las uñas. Ideal para personas activas o con desgaste articular, esta fórmula diaria promueve vitalidad y movilidad.",
+    "benefits": [
+      "Mejora la movilidad articular: Alivia molestias y favorece la flexibilidad",
+      "Protege y rejuvenece: Actúa como antioxidante, fortaleciendo el sistema inmune",
+      "Revitaliza piel, cabello y uñas: Potencia la firmeza y salud",
+      "Aporta energía diaria: Favorece el bienestar general y la vitalidad"
+    ],
+    "usage": "1. Disolver una cucharada (10g) en 200ml de leche, jugo o bebida favorita.",
+    "presentation": "Polvo · 400 gramos · 40 tomas diarias"
+  },
+  "defensevit": {
+    "pvp": 1500,
+    "description": "Jarabe formulado para reforzar el sistema inmunológico y proteger al organismo frente a gripes, resfriados y defensas bajas. Contiene vitamina C, vitamina D3 y zinc, tres nutrientes clave que actúan en sinergia para fortalecer las defensas naturales, combatir el estrés oxidativo y apoyar la recuperación en periodos de debilidad o enfermedad.",
+    "benefits": [
+      "Fortalece las defensas naturales del organismo: La combinación de vitamina C, D3 y zinc contribuye a mantener una respuesta inmune saludable",
+      "Acción antioxidante y celular: La vitamina C protege las células del daño oxidativo y apoya la producción de colágeno",
+      "Favorece una recuperación más rápida: Ideal para prevenir y combatir gripes, resfriados y periodos de fatiga",
+      "Apoya la salud ósea y respiratoria: La vitamina D3 interviene en la absorción del calcio y la función pulmonar"
+    ],
+    "usage": "1. Tomar 2 cucharadas (30ml) al día, o disolver en un vaso (200ml) después de haber ingerido alimentos.",
+    "presentation": "Líquido · 500 ml · 16 tomas diarias aprox."
+  },
+  "calostrovit-polvo": {
+    "pvp": 2700,
+    "description": "Suplemento nutricional infantil en polvo, formulado especialmente para niños a partir de los 2 años. Su mezcla única de calostro, Omega 3 (DHA y EPA), vitaminas del complejo B, vitamina A, C, calcio y magnesio apoya el crecimiento físico, el desarrollo cognitivo y el fortalecimiento del sistema inmunológico. Ideal para complementar la alimentación diaria durante la etapa de crecimiento.",
+    "benefits": [
+      "Refuerza el sistema inmunológico",
+      "Contribuye al crecimiento óseo y muscular",
+      "Apoya el desarrollo cerebral y visual",
+      "Estimula el apetito"
+    ],
+    "usage": "1. Disolver media cucharada de (5g) del producto en 200 ml de agua fría, caliente, bebida a su elección. Niños de 12 años en adelante una cucharada (10 gramos)\n2. Mezclar e ingerir una vez al día. Se recomienda el uso de licuadora.",
+    "presentation": "Polvo · 250 gramos · 50 tomas"
+  },
+  "calostrovit-advanced": {
+    "pvp": 2850,
+    "description": "Suplemento nutricional en cápsulas para adultos, formulado con una potente combinación de calostro bovino, Omega 3 (DHA y EPA) y un complejo de vitaminas esenciales (A, C, B1, B2, B3, B6, B12). Diseñado para fortalecer las defensas, apoyar el sistema nervioso y mejorar el bienestar general. Ideal para personas con un estilo de vida activo, exigente o con baja ingesta de nutrientes clave.",
+    "benefits": [
+      "Fortalece el sistema inmunológico",
+      "Contribuye al metabolismo energético",
+      "Apoya la función cerebral y cardiovascular",
+      "Mejora el rendimiento físico y mental diario"
+    ],
+    "usage": "1. Adultos: Tomar dos cápsulas (1g) al día. Niños: Tomar una cápsula de 500 mg al día\n2. Ingerir con agua o tu bebida de preferencia",
+    "presentation": "Cápsulas · 90 cápsulas · 45 tomas diarias"
+  },
+  "multivitaminico": {
+    "pvp": 2500,
+    "description": "Suplemento en polvo formulado para brindar un impulso diario de energía, concentración y bienestar general. Contiene una combinación efectiva de vitaminas del complejo B, vitamina C, magnesio y extracto de semillas de guaraná, reconocido por su efecto estimulante natural. Ideal para personas activas, estudiantes y profesionales que buscan mantenerse enfocados y con buen rendimiento físico y mental durante el día.",
+    "benefits": [
+      "Energía que te acompaña durante el día",
+      "Rendimiento sin agotamiento",
+      "Enfoque mental y claridad para tus tareas",
+      "Bienestar general desde adentro"
+    ],
+    "usage": "1. Disolver una cucharada (10g) en 200 ml de leche, jugo o bebida favorita\n2. Disolver bien"
+  },
+  "propoleo": {
+    "pvp": 2000,
+    "description": "Este jarabe combina ingredientes tradicionales conocidos por sus propiedades inmunológicas y respiratorias. Formulado con ajo, propóleo, jengibre, rábano, cebolla y vitamina C, está diseñado para fortalecer las defensas, aliviar la tos, descongestionar las vías respiratorias y acelerar la recuperación durante resfriados o procesos gripales. Una alternativa natural para el cuidado diario del sistema respiratorio.",
+    "benefits": [
+      "Refuerza las defensas naturales del organismo",
+      "Acción expectorante y descongestionante",
+      "Alivia la congestión y mejora la respiración",
+      "Propiedades antimicrobianas y antioxidantes"
+    ],
+    "usage": "1. Tomar una cucharada (15 ml) al día o disolver en un vaso (200 ml) con agua o tu bebida favorita.",
+    "presentation": "Líquido · 500 ml · 30 tomas diarias"
+  },
+  "detox-fiber": {
+    "pvp": 2499,
+    "description": "Detox Fiber es un suplemento en polvo formulado con una poderosa combinación de fibras solubles, extractos vegetales y superalimentos, diseñado para apoyar la limpieza digestiva y el equilibrio intestinal.",
+    "benefits": [
+      "Apoya la limpieza y desintoxicación del organismo",
+      "Equilibra la microbiota intestinal",
+      "Apoyar la función hepática y reducir la hinchazón abdominal",
+      "Nutre las bacterias buenas del intestino",
+      "Aporta nutrientes esenciales y antioxidantes naturales"
+    ],
+    "usage": "1. Disolver media cucharada de 10(g) del producto en 240 ml de agua fría, caliente, bebida a su elección.\n2. Mezclar e ingerir una vez al día. Se recomienda el uso de licuadora.",
+    "presentation": "Polvo · 400 gramos · 40 tomas"
+  },
+  "colartrim": {
+    "pvp": 2700,
+    "description": "Suplemento en polvo formulado para apoyar la salud ósea, articular y muscular. Contiene péptidos de colágeno hidrolizado, calcio, magnesio, y una alta dosis de vitaminas D3 y K2, esenciales para la correcta fijación del calcio en los huesos y prevención de calcificación arterial.",
+    "benefits": [
+      "Fortalece la salud osea integral",
+      "Mejora la absorción y correcta distribución del calcio",
+      "Mejora articulaciones y tejidos",
+      "Apoya Función muscular y sistema inmune"
+    ],
+    "usage": "1. Disolver una cucharada (10g) en 200 ml de leche, jugo o bebida favorita\n2. Disolver bien",
+    "presentation": "Polvo · 300 gramos · 30 tomas"
+  },
+  "vitamina-d3-k2": {
+    "pvp": 2400,
+    "description": "Suplemento alimenticio formulado para apoyar la absorción y correcta utilización del calcio, contribuyendo al fortalecimiento óseo y al mantenimiento del sistema inmunológico. La combinación de Vitamina D3 y K2 ayuda a dirigir el calcio hacia los huesos y dientes, favoreciendo el bienestar diario y una protección integral. Ideal para complementar tu rutina de salud ósea y bienestar general.",
+    "benefits": [
+      "Absorción y regulación de calcio y fósforo",
+      "Apoya el funcionamiento normal del sistema inmunitario",
+      "Mantiene los niveles normales de calcio en la sangre",
+      "Mantenimiento de los huesos en condiciones normales y a la coagulación sanguínea normal"
+    ],
+    "usage": "1. Tomar 1 cápsula al día después de una comida.\n2. Ingerir con agua o tu bebida de preferencia.",
+    "presentation": "Cápsulas · 60 cápsulas"
+  },
+  "citrato-de-magnesio-capsulas": {
+    "pvp": 2000,
+    "description": "Magnesio Citrato Puro es un suplemento de alta calidad y biodisponibilidad, diseñado para apoyar múltiples funciones del cuerpo. Cada dosis de 2 g proporciona aproximadamente 320 mg de magnesio elemental, un mineral esencial para el buen funcionamiento del organismo.",
+    "benefits": [
+      "Prevención de calambres musculares",
+      "Mejora la calidad de sueño",
+      "Apoyo al sistema nervioso",
+      "Salud ósea y cardiovascular"
+    ],
+    "usage": "1. Tomar 2 cápsulas (1g)\n2. Ingerir con tu agua o tu bebida favorita",
+    "presentation": "Cápsulas · 120 cápsulas · 30-60 tomas"
+  },
+  "citrato-de-magnesio-polvo": {
+    "pvp": 2500,
+    "description": "Magnesio Citrato Puro es un suplemento de alta calidad y biodisponibilidad, diseñado para apoyar múltiples funciones del cuerpo. Cada dosis de 2 g proporciona aproximadamente 320 mg de magnesio elemental, un mineral esencial para el buen funcionamiento del organismo.",
+    "benefits": [
+      "Prevención de calambres musculares",
+      "Mejora la calidad de sueño",
+      "Apoyo al sistema nervioso",
+      "Salud ósea y cardiovascular"
+    ],
+    "usage": "1. Disolver una cucharada (2g) en 200 ml de leche, jugo o bebida favorita\n2. Disolver bien (no con cuchara de metal)",
+    "presentation": "Polvo · 200 gramos · 50 tomas"
+  },
+  "collagen-power": {
+    "pvp": 2700,
+    "description": "Potencia tu entrenamiento y acelera tu recuperación con nuestro suplemento alimenticio formulado para atletas y personas activas. Combina ingredientes claves para el soporte articular, muscular y energético.",
+    "benefits": [
+      "Fortalece las articulaciones y tejidos conectivos",
+      "Mantiene la salud de las articulaciones bajo carga física intensa",
+      "Apoya el sistema inmune y la síntesis de colágeno",
+      "Fuente rápida de energía para mejorar tu rendimiento"
+    ],
+    "usage": "1. Disolver una cucharada (10g) en 200 ml de leche, jugo o bebida favorita\n2. Disolver bien",
+    "presentation": "Polvo · 300 gramos · 30 tomas"
+  },
+  "creatina": {
+    "pvp": 3490,
+    "description": "La creatina monohidratada es un suplemento que contribuye a mejorar la producción de energía en los músculos durante el ejercicio. Su uso favorece el rendimiento físico y apoya el desarrollo muscular, siendo una opción ideal para quienes buscan optimizar sus entrenamientos de forma efectiva",
+    "benefits": [
+      "Recuperación rápida y energía constante",
+      "Máxima fuerza y potencia",
+      "Desarrollo muscular visible",
+      "Rendimiento muscular"
+    ],
+    "usage": "1. Disolver una cucharada (5g) en 250 ml de agua o tu bebida favorita\n2. Mezclar bien e ingerir 1 vez al día",
+    "presentation": "Polvo · 300 gramos · 60 tomas"
+  },
+  "fit-sculptor": {
+    "pvp": 5400,
+    "description": "Fórmula avanzada de apoyo metabólico y energético que combina L-Carnitina, L-Tirosina, extracto de cardo mariano, cafeína natural, naranja amarga (Citrus aurantium) y capsicum. Diseñada para personas activas que buscan mejorar el enfoque, el rendimiento y la quema de grasa de forma natural. Ideal como complemento a la actividad física o en programas de control de peso.",
+    "benefits": [
+      "Favorece la oxidación de grasas",
+      "Apoya la concentración y el enfoque mental",
+      "Estimula el metabolismo y la energía física",
+      "Protege el hígado y favorece la desintoxicación"
+    ],
+    "usage": "1. Ingerir 2 cápsulas al día con agua o tu bebida favorita\n2. Tomar una cápsula en la mañana y una en la noche.",
+    "presentation": "Cápsulas · 60 cápsulas · 30 días",
+    "ingredients": "Ingredientes destacados: L-Carnitina, L-tirosina, Picolinato de Cromo, Cáscara de naranja amarga, Capsicum annuum en polvo, Anhidrido de Cafeína, Extracto de Semillas de Silybum marianum."
+  },
+  "gel-sculptor": {
+    "pvp": 1500,
+    "description": "Gel de uso tópico con efecto frío, formulado para apoyar la reducción de medidas y tonificación de zonas específicas como abdomen, piernas y brazos. Estimula la circulación superficial y ayuda a mejorar la apariencia de la piel. Ideal como complemento de masajes, ejercicio físico o tratamientos estéticos.",
+    "benefits": [
+      "Favorece la oxidación de grasas",
+      "Mejora la apariencia de la piel con celulitis",
+      "Ayuda a drenar líquidos retenidos",
+      "Ideal para uso en masajes reductores y post-ejercicio"
+    ],
+    "usage": "1. Aplicar en la región deseada y masajear hasta que se absorva\n2. Dejar actuar por cerca de 30 minutos.\n3. Para obtener un mejor resultado, el producto debe ser usado con regularidad. Se recomienda después de la aplicación hacer ejercicios físicos o caminar.",
+    "presentation": "Gel · 500 ml"
+  },
+  "hepapharm": {
+    "pvp": 2400,
+    "description": "Suplemento diseñado para el cuidado y protección del hígado, formulado con una combinación sinérgica de extracto de cardo mariano, colina, coenzima Q10 y un completo grupo de vitaminas esenciales. Ideal para personas que buscan mantener la salud hepática, mejorar su metabolismo y apoyar la función antioxidante del organismo.",
+    "benefits": [
+      "Favorece la desintoxicación y protección hepática: El cardo mariano y la colina ayudan a mantener la salud del hígado y apoyar su función depurativa natural",
+      "Contribuye al metabolismo de grasas y energía: Las vitaminas del complejo B y la colina participan en el metabolismo lipídico y energético",
+      "Aporta poder antioxidante celular: La vitamina C y la coenzima Q10 protegen al hígado del daño oxidativo y fortalecen las defensas del organismo"
+    ],
+    "usage": "1. Tomar 1 cápsula (500mg) al día.\n2. Ingerir con agua o tu bebida de preferencia",
+    "presentation": "Cápsulas · 60 cápsulas · 60 tomas diarias"
+  },
+  "myo-d-chiro-inositol": {
+    "pvp": 3300,
+    "description": "Myo-Inositol (2,000 mg) y D-Chiro Inositol (50 mg) en una proporción 40:1, ideal para apoyar el equilibrio hormonal, la salud ovárica y la función metabólica. Formulado especialmente para mujeres que buscan regular su ciclo menstrual, mejorar la sensibilidad a la insulina o apoyar su fertilidad de forma natural. Sin calorías, sin azúcares, y 100% enfocado en tu bienestar desde adentro.",
+    "benefits": [
+      "Mejora del síndrome de ovario poliquístico (SOP): Mejora la función ovárica y hormonal en mujeres con SOP, ayudando a regular los ciclos menstruales y mejorar la fertilidad",
+      "Apoyo a la fertilidad femenina: Mejora la calidad de los óvulos y apoya la ovulación, lo cual es beneficioso para mujeres que buscan concebir",
+      "Mejora de la sensibilidad a la insulina: Ayuda a mejorar la utilización de la glucosa, beneficiando a personas con resistencia a la insulina o en riesgo de diabete tipo 2",
+      "Reducción del estrés y apoyo neurológico: Participa en la señalización celular del cerebro y puede tener efectos positivos en el estado de ánimo, ayudando a reducir la ansiedad o síntomas depresivos leves"
+    ],
+    "usage": "1. Tomar 4 cápsulas al día.\n2. Ingerir con agua o tu bebida de preferencia.",
+    "presentation": "Cápsulas · 120 cápsulas"
+  }
+}
