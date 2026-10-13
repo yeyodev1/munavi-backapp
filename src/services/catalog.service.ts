@@ -33,6 +33,8 @@ function toCard(p: PopulatedProduct) {
     volumeDiscounts: p.volumeDiscounts,
     isFeatured: p.isFeatured,
     isBestSeller: p.isBestSeller,
+    isNewArrival: p.isNewArrival,
+    inVolumePromo: p.inVolumePromo !== false,
   };
 }
 
@@ -49,6 +51,7 @@ export async function listPublishedProducts(query: any) {
   }
   if (query?.featured === "1" || query?.featured === "true") filter.isFeatured = true;
   if (query?.bestSeller === "1" || query?.bestSeller === "true") filter.isBestSeller = true;
+  if (query?.newArrival === "1" || query?.newArrival === "true") filter.isNewArrival = true;
   if (query?.q && String(query.q).trim()) {
     const rx = { $regex: escapeRegex(String(query.q).trim()), $options: "i" };
     filter.$or = [{ name: rx }, { shortDescription: rx }];
