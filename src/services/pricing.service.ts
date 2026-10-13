@@ -28,8 +28,19 @@ export interface QuoteItem {
   lineTotal: number;
 }
 
+export interface VolumePromoStatus {
+  isActive: boolean;
+  /** Unidades del pedido que cuentan para la promo (productos participantes). */
+  units: number;
+  /** Porcentaje alcanzado con esas unidades (0 si todavía no llega al primer nivel). */
+  percent: number;
+  /** Siguiente nivel y cuántas unidades faltan; null si ya está en el más alto. */
+  next: { minQty: number; percent: number; unitsMissing: number } | null;
+}
+
 export interface Quote {
   items: QuoteItem[];
+  volumePromo: VolumePromoStatus;
   subtotal: number;
   volumeDiscount: number;
   couponDiscount: number;
@@ -97,16 +108,50 @@ export function parseCartItems(raw: unknown): CartItemInput[] {
   return [...merged.values()];
 }
 
+type Tier = { minQty: number; percent: number };
+
+function bestTier(tiers: Tier[] | undefined, quantity: number): Tier | null {
+  let best: Tier | null = null;
+  for (const tier of tiers ?? []) {
+    if (tier.minQty <= quantity && (!best || tier.minQty > best.minQty)) best = tier;
+  }
+  return best;
+}
+
 /** Tramo con mayor minQty que no supere la cantidad. */
 export function volumePercentFor(
   product: Pick<IProduct, "volumeDiscounts">,
   quantity: number,
 ): number {
-  let best: { minQty: number; percent: number } | null = null;
-  for (const tier of product.volumeDiscounts ?? []) {
-    if (tier.minQty <= quantity && (!best || tier.minQty > best.minQty)) best = tier;
-  }
-  return best ? best.percent : 0;
+  return bestTier(product.volumeDiscounts, quantity)?.percent ?? 0;
+}
+
+/**
+ * "Compra más, ahorra más": cuenta las unidades de todo el pedido (combinando
+ * productos participantes) y devuelve el nivel alcanzado y el siguiente.
+ */
+export function volumePromoStatus(
+  promo: { isActive: boolean; tiers: Tier[] } | undefined,
+  units: number,
+): VolumePromoStatus {
+  const tiers = [...(promo?.tiers ?? [])].sort((a, b) => a.minQty - b.minQty);
+  const isActive = Boolean(promo?.isActive) && tiers.length > 0;
+  if (!isActive) return { isActive: false, units, percent: 0, next: null };
+
+  const reached = bestTier(tiers, units);
+  const upcoming = tiers.find((t) => t.minQty > units && t.percent > (reached?.percent ?? 0));
+  return {
+    isActive,
+    units,
+    percent: reached?.percent ?? 0,
+    next: upcoming
+      ? {
+          minQty: upcoming.minQty,
+          percent: upcoming.percent,
+          unitsMissing: upcoming.minQty - units,
+        }
+      : null,
+  };
 }
 
 /**
@@ -126,7 +171,9 @@ export async function buildQuote(input: {
   const products = await Product.find({ _id: { $in: ids } }).lean<IProduct[]>();
   const byId = new Map(products.map((p) => [p._id.toString(), p]));
 
-  const items: QuoteItem[] = cart.map((line) => {
+  const settings = await getSettings();
+
+  const lines = cart.map((line) => {
     const product = byId.get(line.productId);
     if (!product || !product.isPublished) {
       throw new CustomError("Uno de los productos del carrito ya no está disponible", 400);
@@ -152,8 +199,20 @@ export async function buildQuote(input: {
         400,
       );
     }
+    return { line, product, variant, unitPrice };
+  });
+
+  const promoUnits = lines.reduce(
+    (sum, l) => sum + (l.product.inVolumePromo !== false ? l.line.quantity : 0),
+    0,
+  );
+  const volumePromo = volumePromoStatus(settings.volumePromo, promoUnits);
+
+  const items: QuoteItem[] = lines.map(({ line, product, variant, unitPrice }) => {
     const lineSubtotal = unitPrice * line.quantity;
-    const volumeDiscountPercent = volumePercentFor(product, line.quantity);
+    // No se acumulan: gana el mayor entre el descuento propio del producto y el del pedido.
+    const orderPercent = product.inVolumePromo !== false ? volumePromo.percent : 0;
+    const volumeDiscountPercent = Math.max(volumePercentFor(product, line.quantity), orderPercent);
     const lineDiscount = Math.round((lineSubtotal * volumeDiscountPercent) / 100);
 
     return {
@@ -184,7 +243,6 @@ export async function buildQuote(input: {
     couponDiscount = Math.round(((subtotal - volumeDiscount) * found.percent) / 100);
   }
 
-  const settings = await getSettings();
   const { flatRate, freeShippingThreshold } = settings.shipping;
   const base = subtotal - volumeDiscount - couponDiscount;
 
@@ -206,6 +264,7 @@ export async function buildQuote(input: {
 
   return {
     items,
+    volumePromo,
     subtotal,
     volumeDiscount,
     couponDiscount,
