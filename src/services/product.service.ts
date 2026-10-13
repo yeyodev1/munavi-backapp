@@ -56,7 +56,7 @@ function parseVariants(raw: unknown): IVariant[] {
   });
 }
 
-function parseVolumeDiscounts(raw: unknown) {
+export function parseVolumeDiscounts(raw: unknown) {
   if (raw === undefined || raw === null) return [];
   if (!Array.isArray(raw))
     throw new CustomError("Los descuentos por volumen deben ser una lista", 400);
@@ -145,7 +145,13 @@ async function parseInput(body: any, partial: boolean): Promise<Partial<IProduct
   if (body?.volumeDiscounts !== undefined)
     data.volumeDiscounts = parseVolumeDiscounts(body.volumeDiscounts);
 
-  for (const key of ["isFeatured", "isBestSeller", "isPublished"]) {
+  for (const key of [
+    "isFeatured",
+    "isBestSeller",
+    "isNewArrival",
+    "inVolumePromo",
+    "isPublished",
+  ]) {
     if (body?.[key] !== undefined) data[key] = Boolean(body[key]);
   }
   if (body?.order !== undefined) data.order = Number(body.order) || 0;
