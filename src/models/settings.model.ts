@@ -11,6 +11,16 @@ export interface IHeroSlide {
   ctaTo: string;
 }
 
+export interface IVolumeTier {
+  minQty: number;
+  percent: number;
+}
+
+export interface ICommunityPhoto {
+  image: IImage | null;
+  link: string;
+}
+
 export interface ISettings {
   _id: Types.ObjectId;
   // Clave fija con índice único: garantiza un solo documento aunque dos
@@ -29,6 +39,12 @@ export interface ISettings {
   subscribeCouponCode: string;
   bankTransferInfo: string;
   heroSlides: IHeroSlide[];
+  // "Compra más, ahorra más": tramos por unidades de todo el pedido, combinando productos.
+  volumePromo: {
+    isActive: boolean;
+    tiers: IVolumeTier[];
+  };
+  communityPhotos: ICommunityPhoto[];
   notifyEmail: string;
   createdAt?: Date;
   updatedAt?: Date;
@@ -42,6 +58,22 @@ const heroSlideSchema = new Schema<IHeroSlide>(
     mobileImage: { type: imageSchema, default: null },
     ctaLabel: { type: String, default: "" },
     ctaTo: { type: String, default: "" },
+  },
+  { _id: false },
+);
+
+const volumeTierSchema = new Schema<IVolumeTier>(
+  {
+    minQty: { type: Number, required: true, min: 1 },
+    percent: { type: Number, required: true, min: 0, max: 100 },
+  },
+  { _id: false },
+);
+
+const communityPhotoSchema = new Schema<ICommunityPhoto>(
+  {
+    image: { type: imageSchema, default: null },
+    link: { type: String, default: "" },
   },
   { _id: false },
 );
@@ -62,6 +94,12 @@ const settingsSchema = new Schema<ISettings>(
     subscribeCouponCode: { type: String, default: "TEQUIEROVIDA20" },
     bankTransferInfo: { type: String, default: "" },
     heroSlides: { type: [heroSlideSchema], default: [] },
+    volumePromo: {
+      // Apagado hasta que Munavi defina los porcentajes.
+      isActive: { type: Boolean, default: false },
+      tiers: { type: [volumeTierSchema], default: [] },
+    },
+    communityPhotos: { type: [communityPhotoSchema], default: [] },
     notifyEmail: { type: String, default: "" },
   },
   { timestamps: true },
