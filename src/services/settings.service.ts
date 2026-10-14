@@ -51,6 +51,12 @@ function withDefaults(settings: ISettings): ISettings {
       tiers: settings.volumePromo?.tiers ?? [],
     },
     communityPhotos: settings.communityPhotos ?? [],
+    tracking: {
+      metaPixelId: settings.tracking?.metaPixelId ?? "",
+      ga4Id: settings.tracking?.ga4Id ?? "",
+      googleAdsId: settings.tracking?.googleAdsId ?? "",
+      googleAdsPurchaseLabel: settings.tracking?.googleAdsPurchaseLabel ?? "",
+    },
   };
 }
 
@@ -75,6 +81,31 @@ function money(value: unknown, field: string): number {
 function image(value: any) {
   if (!value || typeof value !== "object" || !value.url) return null;
   return { url: String(value.url), publicId: String(value.publicId ?? "") };
+}
+
+// Formato de cada ID: un error de tipeo acá deja las campañas sin medir sin que nadie lo note.
+const TRACKING_FORMATS: Record<keyof ISettings["tracking"], { re: RegExp; label: string }> = {
+  metaPixelId: { re: /^\d{10,20}$/, label: "El ID del Meta Pixel debe ser solo números" },
+  ga4Id: { re: /^G-[A-Z0-9]{4,}$/, label: "El ID de Google Analytics debe tener la forma G-XXXXXXX" },
+  googleAdsId: { re: /^AW-\d{6,}$/, label: "El ID de Google Ads debe tener la forma AW-123456789" },
+  googleAdsPurchaseLabel: {
+    re: /^[A-Za-z0-9_-]{6,}$/,
+    label: "La etiqueta de conversión de Google Ads no es válida",
+  },
+};
+
+function tracking(value: any, current: ISettings["tracking"]): ISettings["tracking"] {
+  const next = { ...current };
+  for (const field of Object.keys(TRACKING_FORMATS) as (keyof ISettings["tracking"])[]) {
+    if (value?.[field] === undefined) continue;
+    const raw = str(value[field]);
+    const id = field === "ga4Id" || field === "googleAdsId" ? raw.toUpperCase() : raw;
+    if (id && !TRACKING_FORMATS[field].re.test(id)) {
+      throw new CustomError(TRACKING_FORMATS[field].label, 400);
+    }
+    next[field] = id;
+  }
+  return next;
 }
 
 /** Reemplaza solo los campos que llegan en el body. */
@@ -157,11 +188,15 @@ export async function updateSettings(body: any): Promise<ISettings> {
       .filter((photo: { image: unknown }) => photo.image);
   }
 
+  if (body?.tracking !== undefined) {
+    update.tracking = tracking(body.tracking ?? {}, current.tracking);
+  }
+
   const updated = await Settings.findOneAndUpdate(
     { key: SETTINGS_KEY },
     { $set: update },
     { new: true },
   ).lean<ISettings>();
   if (!updated) throw new CustomError("No se pudieron guardar los ajustes", 500);
-  return updated;
+  return withDefaults(updated);
 }
