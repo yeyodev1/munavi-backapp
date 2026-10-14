@@ -21,6 +21,14 @@ export interface ICommunityPhoto {
   link: string;
 }
 
+// IDs públicos de medición: viajan al navegador, no son secretos.
+export interface ITracking {
+  metaPixelId: string;
+  ga4Id: string;
+  googleAdsId: string;
+  googleAdsPurchaseLabel: string;
+}
+
 export interface ISettings {
   _id: Types.ObjectId;
   // Clave fija con índice único: garantiza un solo documento aunque dos
@@ -45,6 +53,7 @@ export interface ISettings {
     tiers: IVolumeTier[];
   };
   communityPhotos: ICommunityPhoto[];
+  tracking: ITracking;
   notifyEmail: string;
   createdAt?: Date;
   updatedAt?: Date;
@@ -100,6 +109,12 @@ const settingsSchema = new Schema<ISettings>(
       tiers: { type: [volumeTierSchema], default: [] },
     },
     communityPhotos: { type: [communityPhotoSchema], default: [] },
+    tracking: {
+      metaPixelId: { type: String, default: "" },
+      ga4Id: { type: String, default: "" },
+      googleAdsId: { type: String, default: "" },
+      googleAdsPurchaseLabel: { type: String, default: "" },
+    },
     notifyEmail: { type: String, default: "" },
   },
   { timestamps: true },
