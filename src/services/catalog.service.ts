@@ -49,6 +49,16 @@ export async function listPublishedProducts(query: any) {
     if (!category) return paginated([], 0, pagination);
     filter.category = category._id;
   }
+  // "Necesidades" del inicio: cada una es una lista fija de productos (slugs separados por coma).
+  if (query?.slugs && String(query.slugs).trim()) {
+    const slugs = String(query.slugs)
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .slice(0, 50);
+    if (!slugs.length) return paginated([], 0, pagination);
+    filter.slug = { $in: slugs };
+  }
   if (query?.featured === "1" || query?.featured === "true") filter.isFeatured = true;
   if (query?.bestSeller === "1" || query?.bestSeller === "true") filter.isBestSeller = true;
   if (query?.newArrival === "1" || query?.newArrival === "true") filter.isNewArrival = true;

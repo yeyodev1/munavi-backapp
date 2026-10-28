@@ -10,7 +10,7 @@ export async function listCategories(_req: Request, res: Response, next: NextFun
   }
 }
 
-/** GET /api/catalog/products?category&featured&bestSeller&q&page&limit */
+/** GET /api/catalog/products?category&slugs&featured&bestSeller&newArrival&q&page&limit */
 export async function listProducts(req: Request, res: Response, next: NextFunction) {
   try {
     res.status(200).json(await catalogService.listPublishedProducts(req.query));
