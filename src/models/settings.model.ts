@@ -11,6 +11,11 @@ export interface IHeroSlide {
   ctaTo: string;
 }
 
+export interface IShippingSurcharge {
+  province: string;
+  amount: number;
+}
+
 export interface IVolumeTier {
   minQty: number;
   percent: number;
@@ -38,6 +43,8 @@ export interface ISettings {
     flatRate: number;
     freeShippingThreshold: number | null;
     note: string;
+    // Excepciones logísticas: recargo fijo por provincia (Galápagos, zonas rurales...).
+    surcharges: IShippingSurcharge[];
   };
   whatsapp: string;
   instagram: string;
@@ -94,6 +101,18 @@ const settingsSchema = new Schema<ISettings>(
       flatRate: { type: Number, default: 400 },
       freeShippingThreshold: { type: Number, default: 5000 },
       note: { type: String, default: "Envíos a todo Ecuador con Servientrega" },
+      surcharges: {
+        type: [
+          new Schema<IShippingSurcharge>(
+            {
+              province: { type: String, required: true },
+              amount: { type: Number, required: true, min: 0 },
+            },
+            { _id: false },
+          ),
+        ],
+        default: [],
+      },
     },
     whatsapp: { type: String, default: "" },
     instagram: { type: String, default: "" },

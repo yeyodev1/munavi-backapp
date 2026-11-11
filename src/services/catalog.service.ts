@@ -30,7 +30,7 @@ function toCard(p: PopulatedProduct) {
     })),
     prices: p.prices,
     compareAtPrice: p.compareAtPrice,
-    volumeDiscounts: p.volumeDiscounts,
+    bundlePrices: p.bundlePrices ?? [],
     isFeatured: p.isFeatured,
     isBestSeller: p.isBestSeller,
     isNewArrival: p.isNewArrival,

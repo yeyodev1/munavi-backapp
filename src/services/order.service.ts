@@ -92,6 +92,7 @@ export async function quote(body: any) {
     items: body?.items,
     paymentMethod: body?.paymentMethod,
     couponCode: body?.couponCode,
+    province: body?.province,
   });
 }
 
@@ -102,7 +103,26 @@ export async function createOrder(body: any) {
 
   const customer = parseCustomer(body?.customer);
   const shippingAddress = parseAddress(body?.shippingAddress);
-  const q = await buildQuote({ items: body?.items, paymentMethod, couponCode: body?.couponCode });
+  const q = await buildQuote({
+    items: body?.items,
+    paymentMethod,
+    couponCode: body?.couponCode,
+    province: shippingAddress.province,
+  });
+
+  if (q.coupon?.firstPurchaseOnly) {
+    // Un pedido cancelado o con pago fallido no cuenta como compra.
+    const bought = await Order.exists({
+      "customer.email": customer.email,
+      status: { $nin: ["canceled", "payment_failed"] },
+    });
+    if (bought) {
+      throw new CustomError(
+        `El cupón ${q.coupon.code} es solo para la primera compra. Quítalo para continuar.`,
+        400,
+      );
+    }
+  }
 
   const orderNumber = await nextOrderNumber();
   const created = await Order.create({

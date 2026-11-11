@@ -288,7 +288,7 @@ async function seedProducts(
       ...content,
       prices: { card: 0, transfer: 0, cashOnDelivery: 0 },
       compareAtPrice: null,
-      volumeDiscounts: [],
+      bundlePrices: [],
       isFeatured: false,
       isBestSeller: false,
       // Sin precios todavía: se publica después con --publish-with-prices.

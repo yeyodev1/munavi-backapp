@@ -53,6 +53,21 @@ function parseInput(body: any, partial: boolean) {
   }
 
   if (body?.isActive !== undefined) data.isActive = Boolean(body.isActive);
+  if (body?.firstPurchaseOnly !== undefined)
+    data.firstPurchaseOnly = Boolean(body.firstPurchaseOnly);
+  if (body?.regularPriceOnly !== undefined) data.regularPriceOnly = Boolean(body.regularPriceOnly);
+
+  if (body?.minSubtotal !== undefined) {
+    if (body.minSubtotal === null || body.minSubtotal === "") {
+      data.minSubtotal = null;
+    } else {
+      const min = Number(body.minSubtotal);
+      if (!Number.isInteger(min) || min < 0) {
+        throw new CustomError("La compra mínima del cupón no es válida", 400);
+      }
+      data.minSubtotal = min;
+    }
+  }
 
   if (body?.expiresAt !== undefined) {
     if (body.expiresAt === null || body.expiresAt === "") {

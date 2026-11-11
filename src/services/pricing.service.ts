@@ -44,7 +44,7 @@ export interface Quote {
   subtotal: number;
   volumeDiscount: number;
   couponDiscount: number;
-  coupon: { code: string; percent: number } | null;
+  coupon: { code: string; percent: number; firstPurchaseOnly: boolean } | null;
   shipping: number;
   total: number;
   freeShippingThreshold: number | null;
@@ -118,12 +118,20 @@ function bestTier(tiers: Tier[] | undefined, quantity: number): Tier | null {
   return best;
 }
 
-/** Tramo con mayor minQty que no supere la cantidad. */
-export function volumePercentFor(
-  product: Pick<IProduct, "volumeDiscounts">,
-  quantity: number,
-): number {
-  return bestTier(product.volumeDiscounts, quantity)?.percent ?? 0;
+type Bundle = { qty: number; total: number };
+
+/** El pack más grande que entra en la cantidad (7 unidades usan el precio unitario del pack de 6). */
+export function bundleFor(bundles: Bundle[] | undefined, quantity: number): Bundle | null {
+  let best: Bundle | null = null;
+  for (const b of bundles ?? []) {
+    if (b.qty >= 2 && b.qty <= quantity && (!best || b.qty > best.qty)) best = b;
+  }
+  return best;
+}
+
+/** Precio de N unidades con el pack: el precio unitario del pack por las unidades de la línea. */
+export function bundleLineTotal(bundle: Bundle, quantity: number): number {
+  return Math.round((bundle.total * quantity) / bundle.qty);
 }
 
 /**
@@ -163,6 +171,8 @@ export async function buildQuote(input: {
   items: unknown;
   paymentMethod: unknown;
   couponCode?: unknown;
+  // Con la provincia se suma el recargo de envío que tenga; el carrito cotiza sin ella.
+  province?: unknown;
 }): Promise<Quote> {
   const method = parsePaymentMethod(input.paymentMethod);
   const cart = parseCartItems(input.items);
@@ -208,12 +218,25 @@ export async function buildQuote(input: {
   );
   const volumePromo = volumePromoStatus(settings.volumePromo, promoUnits);
 
+  // El pack cuenta las unidades del producto sumando todos sus sabores.
+  const unitsByProduct = new Map<string, number>();
+  for (const l of lines) {
+    unitsByProduct.set(
+      l.line.productId,
+      (unitsByProduct.get(l.line.productId) ?? 0) + l.line.quantity,
+    );
+  }
+
   const items: QuoteItem[] = lines.map(({ line, product, variant, unitPrice }) => {
     const lineSubtotal = unitPrice * line.quantity;
-    // No se acumulan: gana el mayor entre el descuento propio del producto y el del pedido.
+    const bundle = bundleFor(product.bundlePrices, unitsByProduct.get(line.productId) ?? 0);
+    const bundleDiscount = bundle
+      ? Math.max(0, lineSubtotal - bundleLineTotal(bundle, line.quantity))
+      : 0;
+    // No se acumulan: gana el mayor entre el pack del producto y la promo de todo el pedido.
     const orderPercent = product.inVolumePromo !== false ? volumePromo.percent : 0;
-    const volumeDiscountPercent = Math.max(volumePercentFor(product, line.quantity), orderPercent);
-    const lineDiscount = Math.round((lineSubtotal * volumeDiscountPercent) / 100);
+    const orderDiscount = Math.round((lineSubtotal * orderPercent) / 100);
+    const lineDiscount = Math.max(bundleDiscount, orderDiscount);
 
     return {
       productId: product._id.toString(),
@@ -224,7 +247,9 @@ export async function buildQuote(input: {
       quantity: line.quantity,
       unitPrice,
       lineSubtotal,
-      volumeDiscountPercent,
+      volumeDiscountPercent: lineSubtotal
+        ? Math.round((lineDiscount / lineSubtotal) * 1000) / 10
+        : 0,
       lineDiscount,
       lineTotal: lineSubtotal - lineDiscount,
     };
@@ -239,12 +264,38 @@ export async function buildQuote(input: {
   if (rawCode) {
     const found = await findValidCoupon(rawCode);
     if (!found) throw new CustomError(INVALID_COUPON_MESSAGE, 404);
-    coupon = { code: found.code, percent: found.percent };
-    couponDiscount = Math.round(((subtotal - volumeDiscount) * found.percent) / 100);
+
+    // 404 a propósito: la tienda lo muestra en el campo del cupón y cotiza sin él.
+    if (found.minSubtotal && subtotal - volumeDiscount < found.minSubtotal) {
+      throw new CustomError(
+        `El cupón ${found.code} aplica en compras desde $${(found.minSubtotal / 100).toFixed(2)}`,
+        404,
+      );
+    }
+    const eligible = found.regularPriceOnly ? items.filter((i) => i.lineDiscount === 0) : items;
+    const eligibleTotal = eligible.reduce((sum, i) => sum + i.lineTotal, 0);
+    if (eligibleTotal <= 0) {
+      throw new CustomError(
+        `El cupón ${found.code} aplica solo a productos a precio regular, no a los packs de "Compra más, ahorra más"`,
+        404,
+      );
+    }
+    coupon = {
+      code: found.code,
+      percent: found.percent,
+      firstPurchaseOnly: !!found.firstPurchaseOnly,
+    };
+    couponDiscount = Math.round((eligibleTotal * found.percent) / 100);
   }
 
-  const { flatRate, freeShippingThreshold } = settings.shipping;
+  const { flatRate, freeShippingThreshold, surcharges } = settings.shipping;
   const base = subtotal - volumeDiscount - couponDiscount;
+  const province = String(input.province ?? "")
+    .trim()
+    .toLowerCase();
+  const surcharge = province
+    ? (surcharges.find((r) => r.province.toLowerCase() === province)?.amount ?? 0)
+    : 0;
 
   let shipping = flatRate;
   if (flatRate <= 0) shipping = 0;
@@ -269,8 +320,8 @@ export async function buildQuote(input: {
     volumeDiscount,
     couponDiscount,
     coupon,
-    shipping,
-    total: base + shipping,
+    shipping: shipping + surcharge,
+    total: base + shipping + surcharge,
     freeShippingThreshold: freeShippingThreshold ?? null,
     amountToFreeShipping,
   };

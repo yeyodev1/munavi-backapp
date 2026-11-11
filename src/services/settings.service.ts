@@ -46,6 +46,7 @@ function withDefaults(settings: ISettings): ISettings {
   return {
     ...settings,
     heroSlides: settings.heroSlides ?? [],
+    shipping: { ...settings.shipping, surcharges: settings.shipping?.surcharges ?? [] },
     volumePromo: {
       isActive: Boolean(settings.volumePromo?.isActive),
       tiers: settings.volumePromo?.tiers ?? [],
@@ -86,7 +87,10 @@ function image(value: any) {
 // Formato de cada ID: un error de tipeo acá deja las campañas sin medir sin que nadie lo note.
 const TRACKING_FORMATS: Record<keyof ISettings["tracking"], { re: RegExp; label: string }> = {
   metaPixelId: { re: /^\d{10,20}$/, label: "El ID del Meta Pixel debe ser solo números" },
-  ga4Id: { re: /^G-[A-Z0-9]{4,}$/, label: "El ID de Google Analytics debe tener la forma G-XXXXXXX" },
+  ga4Id: {
+    re: /^G-[A-Z0-9]{4,}$/,
+    label: "El ID de Google Analytics debe tener la forma G-XXXXXXX",
+  },
   googleAdsId: { re: /^AW-\d{6,}$/, label: "El ID de Google Ads debe tener la forma AW-123456789" },
   googleAdsPurchaseLabel: {
     re: /^[A-Za-z0-9_-]{6,}$/,
@@ -108,6 +112,21 @@ function tracking(value: any, current: ISettings["tracking"]): ISettings["tracki
   return next;
 }
 
+function surcharges(raw: unknown): ISettings["shipping"]["surcharges"] {
+  if (!Array.isArray(raw)) throw new CustomError("Los recargos de envío deben ser una lista", 400);
+  const list = raw
+    .map((r: any) => ({
+      province: str(r?.province),
+      amount: money(r?.amount, "el recargo de envío"),
+    }))
+    .filter((r) => r.province);
+  const keys = list.map((r) => r.province.toLowerCase());
+  if (new Set(keys).size !== keys.length) {
+    throw new CustomError("Hay dos recargos de envío para la misma provincia", 400);
+  }
+  return list;
+}
+
 /** Reemplaza solo los campos que llegan en el body. */
 export async function updateSettings(body: any): Promise<ISettings> {
   const current = await getSettings();
@@ -124,6 +143,7 @@ export async function updateSettings(body: any): Promise<ISettings> {
           : money(s.freeShippingThreshold, "el monto para envío gratis");
     }
     if (s.note !== undefined) shipping.note = str(s.note);
+    if (s.surcharges !== undefined) shipping.surcharges = surcharges(s.surcharges);
     update.shipping = shipping;
   }
 

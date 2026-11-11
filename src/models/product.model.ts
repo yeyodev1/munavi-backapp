@@ -16,9 +16,10 @@ export interface IPrices {
   cashOnDelivery: number;
 }
 
-export interface IVolumeDiscount {
-  minQty: number;
-  percent: number;
+// "Compra más, ahorra más": precio final de un pack de N unidades del mismo producto.
+export interface IBundlePrice {
+  qty: number;
+  total: number;
 }
 
 export interface IProduct {
@@ -38,7 +39,7 @@ export interface IProduct {
   variants: IVariant[];
   prices: IPrices;
   compareAtPrice: number | null;
-  volumeDiscounts: IVolumeDiscount[];
+  bundlePrices: IBundlePrice[];
   isFeatured: boolean;
   isBestSeller: boolean;
   // Sale en "Novedades del mes" del inicio.
@@ -71,10 +72,10 @@ const pricesSchema = new Schema<IPrices>(
   { _id: false },
 );
 
-const volumeDiscountSchema = new Schema<IVolumeDiscount>(
+const bundlePriceSchema = new Schema<IBundlePrice>(
   {
-    minQty: { type: Number, required: true, min: 1 },
-    percent: { type: Number, required: true, min: 0, max: 100 },
+    qty: { type: Number, required: true, min: 2 },
+    total: { type: Number, required: true, min: 1 },
   },
   { _id: false },
 );
@@ -96,7 +97,7 @@ const productSchema = new Schema<IProduct>(
     variants: { type: [variantSchema], default: [] },
     prices: { type: pricesSchema, required: true },
     compareAtPrice: { type: Number, default: null },
-    volumeDiscounts: { type: [volumeDiscountSchema], default: [] },
+    bundlePrices: { type: [bundlePriceSchema], default: [] },
     isFeatured: { type: Boolean, default: false },
     isBestSeller: { type: Boolean, default: false },
     isNewArrival: { type: Boolean, default: false },

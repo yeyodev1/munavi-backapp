@@ -82,6 +82,29 @@ export function parseVolumeDiscounts(raw: unknown) {
   return tiers.sort((a, b) => a.minQty - b.minQty);
 }
 
+/** Packs de "Compra más, ahorra más": precio final (centavos) por N unidades del producto. */
+export function parseBundlePrices(raw: unknown): { qty: number; total: number }[] {
+  if (raw === undefined || raw === null) return [];
+  if (!Array.isArray(raw))
+    throw new CustomError("Los precios por cantidad deben ser una lista", 400);
+
+  const bundles = raw.map((b: any) => {
+    const qty = Number(b?.qty);
+    if (!Number.isInteger(qty) || qty < 2 || qty > 50) {
+      throw new CustomError("Cada precio por cantidad debe ser de 2 a 50 unidades", 400);
+    }
+    const total = cents(b?.total, `del pack de ${qty} unidades`);
+    if (total <= 0)
+      throw new CustomError(`El precio del pack de ${qty} unidades no es válido`, 400);
+    return { qty, total };
+  });
+
+  if (new Set(bundles.map((b) => b.qty)).size !== bundles.length) {
+    throw new CustomError("Hay dos precios para la misma cantidad", 400);
+  }
+  return bundles.sort((a, b) => a.qty - b.qty);
+}
+
 async function parseInput(body: any, partial: boolean): Promise<Partial<IProduct>> {
   const data: Record<string, unknown> = {};
   const has = (key: string) => !partial || body?.[key] !== undefined;
@@ -142,8 +165,7 @@ async function parseInput(body: any, partial: boolean): Promise<Partial<IProduct
         : cents(body.compareAtPrice, "tachado");
   }
 
-  if (body?.volumeDiscounts !== undefined)
-    data.volumeDiscounts = parseVolumeDiscounts(body.volumeDiscounts);
+  if (body?.bundlePrices !== undefined) data.bundlePrices = parseBundlePrices(body.bundlePrices);
 
   for (const key of [
     "isFeatured",
