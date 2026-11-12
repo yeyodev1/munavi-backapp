@@ -51,6 +51,9 @@ export interface ISettings {
     note: string;
     // Excepciones logísticas: recargo fijo por provincia (Galápagos, zonas rurales...).
     surcharges: IShippingSurcharge[];
+    // Pedidos grandes (peso o volumen): recargo desde N unidades; null = sin recargo.
+    bulkMinUnits: number | null;
+    bulkAmount: number;
   };
   whatsapp: string;
   instagram: string;
@@ -67,6 +70,10 @@ export interface ISettings {
   };
   communityPhotos: ICommunityPhoto[];
   packShowcase: IPackShowcaseItem[];
+  // Interruptor general de "Compra más, ahorra más" (los packs de cada producto).
+  bundlesActive: boolean;
+  // Credenciales de la Cajita de Pagos; si están vacías se usan las del .env.
+  payphone: { token: string; storeId: string };
   // Cupón que anuncia el banner del inicio (MUNAVI20); se edita desde el panel.
   promoCouponCode: string;
   tracking: ITracking;
@@ -122,6 +129,8 @@ const settingsSchema = new Schema<ISettings>(
         ],
         default: [],
       },
+      bulkMinUnits: { type: Number, default: null, min: 1 },
+      bulkAmount: { type: Number, default: 0, min: 0 },
     },
     whatsapp: { type: String, default: "" },
     instagram: { type: String, default: "" },
@@ -147,6 +156,11 @@ const settingsSchema = new Schema<ISettings>(
       default: [],
     },
     promoCouponCode: { type: String, default: "" },
+    bundlesActive: { type: Boolean, default: true },
+    payphone: {
+      token: { type: String, default: "" },
+      storeId: { type: String, default: "" },
+    },
     tracking: {
       metaPixelId: { type: String, default: "" },
       ga4Id: { type: String, default: "" },

@@ -47,7 +47,14 @@ function withDefaults(settings: ISettings): ISettings {
   return {
     ...settings,
     heroSlides: settings.heroSlides ?? [],
-    shipping: { ...settings.shipping, surcharges: settings.shipping?.surcharges ?? [] },
+    shipping: {
+      ...settings.shipping,
+      surcharges: settings.shipping?.surcharges ?? [],
+      bulkMinUnits: settings.shipping?.bulkMinUnits ?? null,
+      bulkAmount: settings.shipping?.bulkAmount ?? 0,
+    },
+    bundlesActive: settings.bundlesActive !== false,
+    payphone: { token: settings.payphone?.token ?? "", storeId: settings.payphone?.storeId ?? "" },
     volumePromo: {
       isActive: Boolean(settings.volumePromo?.isActive),
       tiers: settings.volumePromo?.tiers ?? [],
@@ -66,7 +73,8 @@ function withDefaults(settings: ISettings): ISettings {
 
 /** Lo que ve la tienda: sin el correo interno ni el código del cupón de suscripción. */
 export async function getPublicSettings() {
-  const { notifyEmail, subscribeCouponCode, key, promoCouponCode, ...rest } = await getSettings();
+  const { notifyEmail, subscribeCouponCode, key, promoCouponCode, payphone, ...rest } =
+    await getSettings();
   // El banner solo anuncia el cupón si está vigente: nunca promete lo que el checkout rechaza.
   const coupon = promoCouponCode ? await findValidCoupon(promoCouponCode) : null;
   const promoCoupon = coupon
@@ -140,6 +148,22 @@ function surcharges(raw: unknown): ISettings["shipping"]["surcharges"] {
   return list;
 }
 
+/**
+ * Lo que ve el panel: el token de Payphone nunca vuelve completo, solo si existe
+ * y sus últimos 4 caracteres para reconocerlo.
+ */
+export async function getAdminSettings() {
+  const { payphone, ...rest } = await getSettings();
+  return {
+    ...rest,
+    payphone: {
+      storeId: payphone.storeId,
+      hasToken: Boolean(payphone.token),
+      tokenEnd: payphone.token ? payphone.token.slice(-4) : "",
+    },
+  };
+}
+
 /** Reemplaza solo los campos que llegan en el body. */
 export async function updateSettings(body: any): Promise<ISettings> {
   const current = await getSettings();
@@ -157,7 +181,28 @@ export async function updateSettings(body: any): Promise<ISettings> {
     }
     if (s.note !== undefined) shipping.note = str(s.note);
     if (s.surcharges !== undefined) shipping.surcharges = surcharges(s.surcharges);
+    if (s.bulkMinUnits !== undefined) {
+      const n = s.bulkMinUnits === null || s.bulkMinUnits === "" ? null : Number(s.bulkMinUnits);
+      if (n !== null && (!Number.isInteger(n) || n < 1)) {
+        throw new CustomError("Las unidades del recargo por pedido grande no son válidas", 400);
+      }
+      shipping.bulkMinUnits = n;
+    }
+    if (s.bulkAmount !== undefined)
+      shipping.bulkAmount = money(s.bulkAmount, "el recargo por pedido grande");
     update.shipping = shipping;
+  }
+
+  if (body?.bundlesActive !== undefined) update.bundlesActive = Boolean(body.bundlesActive);
+
+  // El token solo se reemplaza si llega uno nuevo: el panel nunca lo tiene completo.
+  if (body?.payphone !== undefined) {
+    const p = body.payphone ?? {};
+    const payphone = { ...current.payphone };
+    if (p.storeId !== undefined) payphone.storeId = str(p.storeId);
+    if (p.clearToken === true) payphone.token = "";
+    else if (str(p.token)) payphone.token = str(p.token);
+    update.payphone = payphone;
   }
 
   if (body?.promoCouponCode !== undefined) {

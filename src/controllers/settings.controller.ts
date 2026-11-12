@@ -13,7 +13,7 @@ export async function getPublic(_req: Request, res: Response, next: NextFunction
 /** GET /api/admin/settings */
 export async function get(_req: Request, res: Response, next: NextFunction) {
   try {
-    res.status(200).json(await settingsService.getSettings());
+    res.status(200).json(await settingsService.getAdminSettings());
   } catch (error) {
     next(error);
   }
@@ -22,7 +22,9 @@ export async function get(_req: Request, res: Response, next: NextFunction) {
 /** PUT /api/admin/settings — reemplaza solo los campos enviados. */
 export async function update(req: Request, res: Response, next: NextFunction) {
   try {
-    res.status(200).json(await settingsService.updateSettings(req.body));
+    await settingsService.updateSettings(req.body);
+    // Se responde como el GET del panel: sin el token de Payphone completo.
+    res.status(200).json(await settingsService.getAdminSettings());
   } catch (error) {
     next(error);
   }

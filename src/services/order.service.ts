@@ -99,7 +99,7 @@ export async function quote(body: any) {
 export async function createOrder(body: any) {
   const paymentMethod = parsePaymentMethod(body?.paymentMethod);
   // Antes de validar nada: si la tarjeta no está lista, no tiene sentido seguir.
-  if (paymentMethod === "card") assertPayphoneConfigured();
+  if (paymentMethod === "card") await assertPayphoneConfigured();
 
   const customer = parseCustomer(body?.customer);
   const shippingAddress = parseAddress(body?.shippingAddress);
@@ -157,7 +157,7 @@ export async function createOrder(body: any) {
 
   return {
     order: toPublic(order),
-    payphone: paymentMethod === "card" ? buildPayphoneBox(order) : null,
+    payphone: paymentMethod === "card" ? await buildPayphoneBox(order) : null,
     bankTransferInfo: paymentMethod === "transfer" ? settings.bankTransferInfo : null,
   };
 }
@@ -278,7 +278,7 @@ export async function retryPayment(orderNumber: string, body: any) {
   ).lean<IOrder>();
   if (!updated) throw new CustomError("Este pedido ya no admite reintentos de pago", 409);
 
-  return { order: toPublic(updated), payphone: buildPayphoneBox(updated) };
+  return { order: toPublic(updated), payphone: await buildPayphoneBox(updated) };
 }
 
 // --- Administración ---

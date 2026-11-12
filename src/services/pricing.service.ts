@@ -242,7 +242,9 @@ export async function buildQuote(input: {
 
   const items: QuoteItem[] = lines.map(({ line, product, variant, unitPrice }) => {
     const lineSubtotal = unitPrice * line.quantity;
-    const bundle = bundleFor(product.bundlePrices, unitsByProduct.get(line.productId) ?? 0);
+    const bundle = settings.bundlesActive
+      ? bundleFor(product.bundlePrices, unitsByProduct.get(line.productId) ?? 0)
+      : null;
     const bundleDiscount = bundle
       ? Math.max(0, lineSubtotal - bundleLineTotal(bundle, line.quantity))
       : 0;
@@ -306,7 +308,8 @@ export async function buildQuote(input: {
     couponDiscount = Math.round((eligibleTotal * found.percent) / 100);
   }
 
-  const { flatRate, freeShippingThreshold, surcharges } = settings.shipping;
+  const { flatRate, freeShippingThreshold, surcharges, bulkMinUnits, bulkAmount } =
+    settings.shipping;
   const base = subtotal - volumeDiscount - couponDiscount;
   const province = String(input.province ?? "")
     .trim()
@@ -314,6 +317,9 @@ export async function buildQuote(input: {
   const surcharge = province
     ? (surcharges.find((r) => r.province.toLowerCase() === province)?.amount ?? 0)
     : 0;
+  // Pedidos grandes (peso o volumen): recargo aunque el envío sea gratis.
+  const totalUnits = items.reduce((sum, i) => sum + i.quantity, 0);
+  const bulk = bulkMinUnits && totalUnits >= bulkMinUnits ? bulkAmount : 0;
 
   let shipping = flatRate;
   if (flatRate <= 0) shipping = 0;
@@ -338,8 +344,8 @@ export async function buildQuote(input: {
     volumeDiscount,
     couponDiscount,
     coupon,
-    shipping: shipping + surcharge,
-    total: base + shipping + surcharge,
+    shipping: shipping + surcharge + bulk,
+    total: base + shipping + surcharge + bulk,
     freeShippingThreshold: freeShippingThreshold ?? null,
     amountToFreeShipping,
   };

@@ -2,6 +2,7 @@ import axios from "axios";
 import { env } from "../config/env";
 import { CustomError } from "../errors/customError.error";
 import { IOrder } from "../models/order.model";
+import { getSettings } from "./settings.service";
 
 const CONFIRM_URL = "https://paymentbox.payphonetodoesposible.com/api/confirm";
 
@@ -23,14 +24,26 @@ export interface PayphoneBox {
   documentId: string;
 }
 
-export function isPayphoneConfigured(): boolean {
-  return !!(env.PAYPHONE_TOKEN && env.PAYPHONE_STORE_ID);
+/** Las del panel (Ajustes) mandan; si faltan, las del .env. */
+async function credentials(): Promise<{ token: string; storeId: string }> {
+  const { payphone } = await getSettings();
+  return {
+    token: payphone.token || env.PAYPHONE_TOKEN,
+    storeId: payphone.storeId || env.PAYPHONE_STORE_ID,
+  };
 }
 
-export function assertPayphoneConfigured(): void {
-  if (!isPayphoneConfigured()) {
+export async function isPayphoneConfigured(): Promise<boolean> {
+  const { token, storeId } = await credentials();
+  return !!(token && storeId);
+}
+
+export async function assertPayphoneConfigured(): Promise<{ token: string; storeId: string }> {
+  const creds = await credentials();
+  if (!creds.token || !creds.storeId) {
     throw new CustomError("El pago con tarjeta todavía no está disponible", 503);
   }
+  return creds;
 }
 
 /** Único por intento y dentro del límite de 50 caracteres de Payphone. */
@@ -42,10 +55,11 @@ export function newClientTransactionId(orderNumber: string): string {
  * Datos para la Cajita de Pagos. El token viaja al navegador porque así lo
  * exige la Cajita; el cobro igual se valida del lado del servidor al confirmar.
  */
-export function buildPayphoneBox(order: IOrder): PayphoneBox {
+export async function buildPayphoneBox(order: IOrder): Promise<PayphoneBox> {
+  const { token, storeId } = await credentials();
   return {
-    token: env.PAYPHONE_TOKEN,
-    storeId: env.PAYPHONE_STORE_ID,
+    token,
+    storeId,
     clientTransactionId: order.clientTransactionId,
     amount: order.total,
     // No se desglosa IVA: todo el monto va como "sin impuesto".
@@ -74,14 +88,14 @@ export async function confirmTransaction(
   id: number,
   clientTxId: string,
 ): Promise<PayphoneConfirmResponse> {
-  assertPayphoneConfigured();
+  const { token } = await assertPayphoneConfigured();
   try {
     const { data } = await axios.post<PayphoneConfirmResponse>(
       CONFIRM_URL,
       { id, clientTxId },
       {
         headers: {
-          Authorization: `Bearer ${env.PAYPHONE_TOKEN}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         timeout: 20000,
