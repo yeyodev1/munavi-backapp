@@ -21,6 +21,12 @@ export interface IVolumeTier {
   percent: number;
 }
 
+// Vitrina de "Elige tu producto y ahorra por cantidad": producto y sabor de la foto.
+export interface IPackShowcaseItem {
+  product: string;
+  variant: string;
+}
+
 export interface ICommunityPhoto {
   image: IImage | null;
   link: string;
@@ -60,6 +66,9 @@ export interface ISettings {
     tiers: IVolumeTier[];
   };
   communityPhotos: ICommunityPhoto[];
+  packShowcase: IPackShowcaseItem[];
+  // Cupón que anuncia el banner del inicio (MUNAVI20); se edita desde el panel.
+  promoCouponCode: string;
   tracking: ITracking;
   notifyEmail: string;
   createdAt?: Date;
@@ -128,6 +137,16 @@ const settingsSchema = new Schema<ISettings>(
       tiers: { type: [volumeTierSchema], default: [] },
     },
     communityPhotos: { type: [communityPhotoSchema], default: [] },
+    packShowcase: {
+      type: [
+        new Schema<IPackShowcaseItem>(
+          { product: { type: String, required: true }, variant: { type: String, default: "" } },
+          { _id: false },
+        ),
+      ],
+      default: [],
+    },
+    promoCouponCode: { type: String, default: "" },
     tracking: {
       metaPixelId: { type: String, default: "" },
       ga4Id: { type: String, default: "" },

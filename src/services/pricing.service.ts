@@ -44,7 +44,13 @@ export interface Quote {
   subtotal: number;
   volumeDiscount: number;
   couponDiscount: number;
-  coupon: { code: string; percent: number; firstPurchaseOnly: boolean } | null;
+  coupon: {
+    code: string;
+    percent: number;
+    firstPurchaseOnly: boolean;
+    // Líneas con pack que quedaron fuera del cupón (no se acumula): la tienda lo avisa.
+    excludedItems: number;
+  } | null;
   shipping: number;
   total: number;
   freeShippingThreshold: number | null;
@@ -60,6 +66,13 @@ const PRICE_KEY: Record<PaymentMethod, keyof IPrices> = {
 export function parsePaymentMethod(value: unknown): PaymentMethod {
   if (typeof value !== "string" || !PAYMENT_METHODS.includes(value as PaymentMethod)) {
     throw new CustomError("Elige un método de pago válido", 400);
+  }
+  // Munavi no habilitó el pago contra entrega (nov 2026); queda en el modelo por los pedidos viejos.
+  if (value === "cash_on_delivery") {
+    throw new CustomError(
+      "El pago contra entrega no está disponible. Elige tarjeta o transferencia.",
+      400,
+    );
   }
   return value as PaymentMethod;
 }
@@ -266,17 +279,21 @@ export async function buildQuote(input: {
     if (!found) throw new CustomError(INVALID_COUPON_MESSAGE, 404);
 
     // 404 a propósito: la tienda lo muestra en el campo del cupón y cotiza sin él.
-    if (found.minSubtotal && subtotal - volumeDiscount < found.minSubtotal) {
-      throw new CustomError(
-        `El cupón ${found.code} aplica en compras desde $${(found.minSubtotal / 100).toFixed(2)}`,
-        404,
-      );
-    }
     const eligible = found.regularPriceOnly ? items.filter((i) => i.lineDiscount === 0) : items;
     const eligibleTotal = eligible.reduce((sum, i) => sum + i.lineTotal, 0);
     if (eligibleTotal <= 0) {
       throw new CustomError(
-        `El cupón ${found.code} aplica solo a productos a precio regular, no a los packs de "Compra más, ahorra más"`,
+        "Este cupón no se puede aplicar a los productos que ya tienen descuentos por cantidad. Las promociones no son acumulables.",
+        404,
+      );
+    }
+    // El mínimo se cuenta solo sobre lo que el cupón descuenta.
+    if (found.minSubtotal && eligibleTotal < found.minSubtotal) {
+      const min = `$${(found.minSubtotal / 100).toFixed(2)}`;
+      throw new CustomError(
+        found.regularPriceOnly
+          ? `El cupón ${found.code} aplica en compras desde ${min} en productos a precio regular`
+          : `El cupón ${found.code} aplica en compras desde ${min}`,
         404,
       );
     }
@@ -284,6 +301,7 @@ export async function buildQuote(input: {
       code: found.code,
       percent: found.percent,
       firstPurchaseOnly: !!found.firstPurchaseOnly,
+      excludedItems: items.length - eligible.length,
     };
     couponDiscount = Math.round((eligibleTotal * found.percent) / 100);
   }

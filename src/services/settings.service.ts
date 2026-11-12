@@ -1,6 +1,7 @@
 import { CustomError } from "../errors/customError.error";
 import { Coupon } from "../models/coupon.model";
 import { ISettings, Settings } from "../models/settings.model";
+import { findValidCoupon } from "./coupon.service";
 import { parseVolumeDiscounts } from "./product.service";
 
 const SETTINGS_KEY = "main";
@@ -52,6 +53,8 @@ function withDefaults(settings: ISettings): ISettings {
       tiers: settings.volumePromo?.tiers ?? [],
     },
     communityPhotos: settings.communityPhotos ?? [],
+    packShowcase: settings.packShowcase ?? [],
+    promoCouponCode: settings.promoCouponCode ?? "",
     tracking: {
       metaPixelId: settings.tracking?.metaPixelId ?? "",
       ga4Id: settings.tracking?.ga4Id ?? "",
@@ -63,8 +66,18 @@ function withDefaults(settings: ISettings): ISettings {
 
 /** Lo que ve la tienda: sin el correo interno ni el código del cupón de suscripción. */
 export async function getPublicSettings() {
-  const { notifyEmail, subscribeCouponCode, key, ...rest } = await getSettings();
-  return rest;
+  const { notifyEmail, subscribeCouponCode, key, promoCouponCode, ...rest } = await getSettings();
+  // El banner solo anuncia el cupón si está vigente: nunca promete lo que el checkout rechaza.
+  const coupon = promoCouponCode ? await findValidCoupon(promoCouponCode) : null;
+  const promoCoupon = coupon
+    ? {
+        code: coupon.code,
+        percent: coupon.percent,
+        minSubtotal: coupon.minSubtotal ?? null,
+        regularPriceOnly: Boolean(coupon.regularPriceOnly),
+      }
+    : null;
+  return { ...rest, promoCoupon };
 }
 
 function str(value: unknown): string {
@@ -145,6 +158,22 @@ export async function updateSettings(body: any): Promise<ISettings> {
     if (s.note !== undefined) shipping.note = str(s.note);
     if (s.surcharges !== undefined) shipping.surcharges = surcharges(s.surcharges);
     update.shipping = shipping;
+  }
+
+  if (body?.promoCouponCode !== undefined) {
+    update.promoCouponCode = str(body.promoCouponCode).toUpperCase();
+  }
+
+  if (body?.packShowcase !== undefined) {
+    if (!Array.isArray(body.packShowcase)) {
+      throw new CustomError("La vitrina de packs debe ser una lista", 400);
+    }
+    const items = body.packShowcase
+      .map((i: any) => ({ product: str(i?.product), variant: str(i?.variant) }))
+      .filter((i: { product: string }) => i.product);
+    if (items.length > 10)
+      throw new CustomError("La vitrina de packs admite hasta 10 productos", 400);
+    update.packShowcase = items;
   }
 
   for (const field of [
